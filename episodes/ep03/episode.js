@@ -1,7 +1,8 @@
 // Épisode 3 · La Boîte Rouge et la Boîte Verte
 (() => {
   const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, CAST, clamp, lerp, ease, prog, lin, win, rr, circ, ell, line, poly, alpha,
-    person, actor, item, token, tokens, sky, paper, stall, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD } = Moteur;
+    person, actor, item, token, tokens, sky, paper, stall, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD ,
+    sparkle, burst, pop, rnd, rays } = Moteur;
 
   // Six articles du marché : trois besoins (boîte verte), trois envies (boîte rouge).
   const NEEDS = [['eau', 2], ['galettes', 3], ['trousse', 3]];
@@ -56,7 +57,8 @@
         const g = lin(t, L.NY1.s + 1.2, 1.8);
         for (let i = 0; i < 10; i++) {
           const q = clamp(g * 1.8 - i * .08);
-          if (q > 0) token(lerp(1200, 560 + i * 60, ease(q)), lerp(GROUND - 200, 300, ease(q)) - Math.sin(q * Math.PI) * 80, 24);
+          if (q > 0) token(lerp(1200, 560 + i * 60, ease(q)), lerp(GROUND - 200, 300, ease(q)) - Math.sin(q * Math.PI) * 80, 24, 1, 1, q < 1 ? Math.cos(q * Math.PI * 4) : 1);
+          if (q > 0 && q < 1) sparkle(lerp(1200, 560 + i * 60, ease(q)), lerp(GROUND - 200, 300, ease(q)) - Math.sin(q * Math.PI) * 80 + 30, 10, .7);
         }
         bigText('?', 960, 170, 110, CLAY, prog(t, L.N2.s + .3, .5), 700);
       },
@@ -78,6 +80,7 @@
           const x = 850 + i * 170;
           const hs = (i >= 3 && t > L.S1.s + .5 && t < L.S2.e) ? 1 : (i < 3 && t > L.M1.s + .5 && t < L.M1b.e) ? 1 : 0;
           glow(x, top - 50, 110, hs);
+          if (hs) sparkle(x + 40 * Math.sin(t * 3 + i), top - 100 + 20 * Math.cos(t * 4 + i), 12 * (.5 + .5 * Math.sin(t * 6 + i)), 1);
           item(n, x, top - 50, 50);
           priceTag(p, x, top + 70);
         });
@@ -118,7 +121,8 @@
           if (show <= 0 || drop >= 1) return;
           const x = lerp(960, GX, ease(drop)), y = lerp(380, BY - 150, ease(drop));
           item(n, x, y, lerp(90, 44, drop));
-          warn(1150, 380, 60, win(t, l.s + 1.2, l.e - 1.6, .3));
+          warn(1150, 380, 60 * (1 + .08 * Math.sin(t * 10)), win(t, l.s + 1.2, l.e - 1.6, .3));
+          burst(GX, BY - 160, clamp((t - (l.e - .6)) / .7), 70, '#8FE0B0');
         });
         const s7 = lin(t, L.N7.s, .5), d7 = lin(t, L.N7.e - 1.8, 1.1);
         if (s7 > 0 && d7 < 1) WANTS.forEach(([n], i) => {
@@ -126,6 +130,7 @@
           item(n, lerp(x0, RX - 110 + i * 110, ease(d7)), lerp(y0, BY - 150, ease(d7)), lerp(70, 44, d7));
         });
         check(1150, 520, 50, win(t, L.N7.s + 3, L.N7.e - 1.8, .3));
+        burst(RX, BY - 160, clamp((t - (L.N7.e - .7)) / .7), 80, '#FFB0A8');
       },
     },
     {
@@ -163,6 +168,8 @@
         tokens(Math.max(0, left), 960, 230, 26, { gap: 64 });
         bigText(String(Math.max(0, left)), 960, 330, 60, CLAY, 1, 700);
         glow(xs[4], 540, 160, win(t, L.M2.s, L.S4.e, .4) * .8);
+        rays(xs[4], 540, 260, win(t, L.M2.s + 1, L.S4.e, .4) * .6);
+        if (phaseA && a >= 1 && t < L.NY5.s + 4.6) Moteur.shake(4);
       },
     },
     {
@@ -180,6 +187,7 @@
         alpha(sum, () => {
           actor('milo', 780, GROUND + 40, 285); actor('sacha', 960, GROUND + 40, 270, { up: true }); actor('naya', 1280, GROUND + 40, 330, { face: -1 });
           item('eau', 700, GROUND - 120, 30); item('bonbons', 1030, GROUND - 190, 36);
+          Moteur.confetti(t, .8, 40);
         });
         alpha(1 - sum, () => {
           actor('naya', 960, GROUND + 40, 360);

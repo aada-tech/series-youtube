@@ -1,7 +1,8 @@
 // Épisode 4 · L'Aventure du Choix Invisible
 (() => {
   const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, CAST, clamp, lerp, ease, prog, lin, win, rr, circ, ell, line, poly, alpha,
-    person, actor, item, token, tokens, sky, paper, shop, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens } = Moteur;
+    person, actor, item, token, tokens, sky, paper, shop, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens ,
+    sparkle, burst, pop, rnd, rays } = Moteur;
 
   // Balance à deux plateaux. tilt > 0 fait descendre le plateau de gauche.
   function balance(x, py, tilt, left, right) {
@@ -98,18 +99,23 @@
       ],
       draw(t, L) {
         paper();
-        const a = prog(t, L.NY2.s + 2, 1), back = prog(t, L.NY3.s, 1), b = prog(t, L.NY3.s + 1.2, 1), reset = prog(t, L.M3b.e, 1);
+        const spring = (t0, d) => { const x = clamp((t - t0) / d); return x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.cos(x * 9) * Math.exp(-x * 5) * (1 - x); };
+        const a = spring(L.NY2.s + 2, 1.4), back = prog(t, L.NY3.s, 1), b = spring(L.NY3.s + 1.2, 1.4), reset = prog(t, L.M3b.e, 1);
+        Moteur.spotlight(960, 560, 520, win(t, L.NY2.s, L.M3b.e, .8) * .9);
         const onLeft = a * (1 - back) * (1 - reset), onRight = b * (1 - reset);
         const tilt = onLeft - onRight;
         const fadeKite = prog(t, L.NY2.s + 3.2, 2) * (1 - back), fadeBrush = prog(t, L.NY3.s + 2.4, 2) * (1 - reset);
         const pl = balance(960, 330, tilt,
-          { item: 'pinceaux', a: 1 - fadeBrush, ghost: fadeBrush, tokens: onLeft >= .99 ? 5 : 0 },
-          { item: 'cerfvolant', a: 1 - fadeKite, ghost: fadeKite, tokens: onRight >= .99 ? 5 : 0 });
+          { item: 'pinceaux', a: 1 - fadeBrush, ghost: fadeBrush, tokens: onLeft > .85 ? 5 : 0 },
+          { item: 'cerfvolant', a: 1 - fadeKite, ghost: fadeKite, tokens: onRight > .85 ? 5 : 0 });
         const mid = [960, 190];
+        [[fadeKite, pl[1]], [fadeBrush, pl[0]]].forEach(([f, [px, py]]) => {
+          if (f > 0 && f < 1) for (let i = 0; i < 14; i++) { const q = (f * 1.4 + rnd(i) * .4) % 1; sparkle(px + (rnd(i + 3) - .5) * 160 + q * 40, py - 70 - q * 220, 9 * (1 - q), (1 - q) * .8, '#C9D2D6'); }
+        });
         const moving = (p, dst) => { if (p > 0 && p < 1) for (let k = 0; k < 5; k++) token(lerp(mid[0] - 80 + k * 40, dst[0] - 80 + k * 40, ease(p)), lerp(mid[1], dst[1] - 12, ease(p)), 18); };
         if (onLeft < .01 && onRight < .01) for (let k = 0; k < 5; k++) token(mid[0] - 80 + k * 40, mid[1], 18);
-        moving(a < 1 && back === 0 ? a : 0, pl[0]);
-        moving(b < 1 && reset === 0 ? b : 0, pl[1]);
+        moving(a < .85 && back === 0 ? a / .85 : 0, pl[0]);
+        moving(b < .85 && reset === 0 ? b / .85 : 0, pl[1]);
         bigText('?', 960, 90, 90, CLAY, prog(t, L.NY4.s + .5, .5), 700);
         node('sacha', 190, 860, 80, { a: 1 });
         node('naya', 1730, 860, 80, { a: 1 });
@@ -136,6 +142,7 @@
         const sw = (t - L.S4.s) % 3 < 1.5;
         tableau(760, s.top - 150, th * (sw ? 1 : 0)); alpha(th * (sw ? 0 : 1), () => item('cerfvolant', 760, s.top - 160, 60));
         flyTokens(5, s.hx, s.hy, 1330, top - 120, lin(t, L.S4.e - 1.4, 1.4), 16, 80);
+        burst(s.hx + 20, s.hy - 20, clamp((t - L.S4.e - .4) / .8), 60);
         fly('pinceaux', 1300, top - 50, s.hx + 20, s.hy - 20, lin(t, L.S4.e - .6, 1), 50, 60);
         if (t > L.S4.e + .4) item('pinceaux', s.hx + 20, s.hy - 20, 44);
         actor('milo', 520, GROUND + 40, 285);

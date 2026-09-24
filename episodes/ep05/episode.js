@@ -1,7 +1,8 @@
 // Épisode 5 · Le Pouvoir de la Patience
 (() => {
   const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, CAST, clamp, lerp, ease, prog, lin, win, rr, circ, ell, line, poly, alpha,
-    person, actor, item, token, tokens, gear, sky, paper, shop, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD } = Moteur;
+    person, actor, item, token, tokens, gear, sky, paper, shop, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD ,
+    sparkle, burst, pop, rnd, rays } = Moteur;
 
   // Pompe à eau : p = 0 simple croquis au crayon, p = 1 objet fini et coloré.
   function pompe(x, y, k, p, water = 0) {
@@ -130,6 +131,13 @@
           bigText(String(i + 1), x, 125, 56, on ? INK : '#B6BDB8', 1, 600);
         }
         const done = week - (phase < 1 && week > 0 ? 1 : 0);
+        // soleil et lune qui tournent : le temps passe vite
+        if (week > 0 && t < starts[5] + 2) alpha(.9, () => {
+          const ang = (t - starts[0]) * 2.4, cx0 = 1790, cy0 = 170;
+          c.strokeStyle = 'rgba(200,190,170,.5)'; c.lineWidth = 3; c.setLineDash([8, 10]); circ(cx0, cy0, 80); c.stroke(); c.setLineDash([]);
+          c.fillStyle = '#FFD76A'; circ(cx0 + Math.cos(ang) * 80, cy0 + Math.sin(ang) * 80, 26); c.fill();
+          c.fillStyle = '#C9D6E8'; circ(cx0 - Math.cos(ang) * 80, cy0 - Math.sin(ang) * 80, 20); c.fill();
+        });
         const envies = Math.max(0, done - (t > L.N5.s + 5 ? 2 : 0)), projet = done * 2, entraide = done - (t > L.N6b.s + 5.5 ? 3 : 0);
         bocal(560, 820, envies, { lid: JARS[0][1], icon: JARS[0][0], h: 280, w: 200, hl: win(t, L.N5.s + 1, L.N5.e, .4) * .6 });
         bocal(960, 820, projet, { lid: JARS[1][1], icon: JARS[1][0], h: 420, w: 220, grad: 6, hl: win(t, L.N6.s, L.N6.e, .4) * .6 });
@@ -137,15 +145,19 @@
         if (week > 0 && phase < 1) {
           const q = phase;
           [[560, 1], [960, 2], [1360, 1]].forEach(([x, n]) => flyTokens(n, 960, 230, x, 560, q, 18, 40));
+          [560, 960, 1360].forEach(x => burst(x, 600, clamp((q - .75) / .25), 40));
         }
         const f = lin(t, L.N5.s + 3.6, 1.4);
         if (f > 0 && f < 1) flyTokens(2, 560, 700, 280, 380, f, 18, 60);
         if (t > L.N5.s + 4.9) item('figurine', 280, 380, 60, prog(t, L.N5.s + 4.9, .4));
         const g = lin(t, L.N6b.s + 4, 1.5);
-        alpha(prog(t, L.N6b.s + 2, .5), () => node('bergere', 1640, 330, 70, { badge: 'planche' }));
-        if (g > 0 && g < 1) flyTokens(3, 1360, 700, 1640, 330, g, 18, 60);
+        alpha(prog(t, L.N6b.s + 2, .5), () => node('bergere', 1600, 420, 70, { badge: 'planche' }));
+        if (g > 0 && g < 1) flyTokens(3, 1360, 700, 1600, 420, g, 18, 60);
         pompe(1680, 820, .8, projet / 12);
         glow(960, 500, 300, win(t, L.N7.s, L.N7.e + 1, .5));
+        rays(960, 560, 420, win(t, L.N7.s, L.N7.e + 1, .5));
+        Moteur.confetti(t, win(t, L.N7.s + .3, L.N7.e + 1.4, .4), 70);
+        for (let i = 0; i < 6; i++) sparkle(1680 + (rnd(i) - .5) * 200, 820 - rnd(i + 1) * 300, 12 * Math.max(0, Math.sin(t * 4 + i)) * (projet / 12), 1);
       },
     },
     {
@@ -161,6 +173,9 @@
         sky();
         for (let r = 0; r < 2; r++) for (let x = 1250 + r * 30; x < 1880; x += 105) item('salade', x, GROUND + 40 + r * 60, 30);
         pompe(980, GROUND + 10, 1.15, prog(t, L.N7b.s + 1, L.N7b.e - L.N7b.s), prog(t, L.S4.s + .8, 1));
+        const w = prog(t, L.S4.s + .8, 1);
+        if (w > 0) for (let i = 0; i < 22; i++) { const q = (t * .9 + rnd(i)) % 1; c.fillStyle = `rgba(93,169,233,${.8 * (1 - q) * w})`; circ(980 + 1.15 * 320 + q * 260 * (.6 + rnd(i + 2) * .6), GROUND - 20 - Math.sin(q * Math.PI) * (80 + rnd(i + 5) * 80), 7 * (1 - q * .5)); c.fill(); }
+        Moteur.confetti(t, win(t, L.S4.s + .5, L.S4.e + .5, .4) * .8, 50);
         const s = actor('sacha', 640, GROUND + 40, 280, { up: t > L.S4.s && t < L.S4.e });
         actor('naya', 400, GROUND + 40, 330);
         const m = actor('milo', 1700, GROUND + 40, 285, { face: -1, reach: t > L.M4.s });

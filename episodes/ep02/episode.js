@@ -1,7 +1,8 @@
 // Épisode 2 · D'où Viennent les Pièces ?
 (() => {
   const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, CAST, clamp, lerp, ease, prog, lin, win, rr, circ, ell, line, poly, alpha,
-    person, actor, item, token, tokens, sky, paper, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens } = Moteur;
+    person, actor, item, token, tokens, sky, paper, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens,
+    sparkle, burst, pop, rnd, rays } = Moteur;
 
   // Armoire commune : levier à droite, bac en bas. open > 0 montre les casiers à l'intérieur.
   const OWNERS = ['bergere', 'meunier', 'maraichere', 'menuisier', 'forgeronne', 'milo', 'naya', 'sacha', 'mecanicienne'];
@@ -49,6 +50,13 @@
       const g = c.createLinearGradient(0, y + h, 0, y);
       g.addColorStop(0, '#F4C542'); g.addColorStop(1, '#F29B3A');
       c.fillStyle = g; c.fillRect(x - w / 2, y + h - 8 - fh, w, fh);
+      if (fh > 10) {
+        c.fillStyle = 'rgba(255,255,255,.45)';
+        for (let i = 0; i < 8; i++) { const q = (Moteur.now() * (.5 + rnd(i) * .5) + rnd(i + 3)) % 1; circ(x - 25 + rnd(i + 6) * 50, y + h - 8 - q * fh, 3 + rnd(i + 2) * 5); c.fill(); }
+        c.fillStyle = 'rgba(255,255,255,.35)'; c.beginPath(); c.moveTo(x - w / 2, y + h - 8 - fh);
+        for (let xx = 0; xx <= w; xx += 10) c.lineTo(x - w / 2 + xx, y + h - 8 - fh + Math.sin(Moteur.now() * 4 + xx * .15) * 4);
+        c.lineTo(x + w / 2, y + h - 8 - fh + 12); c.lineTo(x - w / 2, y + h - 8 - fh + 12); c.fill();
+      }
       c.restore();
       item('horloge', x - 36, y - 46, 26); item('muscle', x + 8, y - 50, 26); item('etoile', x + 50, y - 46, 24);
     });
@@ -81,6 +89,9 @@
         const lever = win(t, L.N2.s + .8, L.N2.s + 2.6, .4);
         const A = armoire(1240, 1.1, { lever });
         const drop = lin(t, L.N2.s + 1.4, .7);
+        if (t > L.N2.s + 1.4 && t < L.N2.s + 1.7) Moteur.shake(6);
+        burst(A.tray[0], A.tray[1] - 20, clamp((t - L.N2.s - 2) / .7), 50);
+        rays(1240, 480, 520, win(t, L.N3.s, L.N3.e + 1, .5) * .7);
         if (drop > 0 && t < L.N2.s + 3.2) tokens(3, A.tray[0], lerp(A.tray[1] - 120, A.tray[1] - 8, ease(drop)), 16, { gap: 34 });
         flyTokens(3, A.tray[0], A.tray[1] - 8, 1480, GROUND - 190, lin(t, L.N2.s + 3.2, 1), 16, 60);
         const b = actor('bergere', 1560, GROUND + 20, 380, { face: -1, reach: lever > 0 });
@@ -105,7 +116,7 @@
         { id: 'NY2b', who: 'naya', text: 'Et ce n\'est pas fini. Regardez où vont ces jetons maintenant.', pad: .6 },
       ],
       draw(t, L) {
-        sky({ dusk: .25 * (1 - prog(t, 0, L.N4.s + 3)) });
+        sky({ dusk: .45 * (1 - prog(t, 0, L.N4.s + 4)) });
         potager(1080, 1900);
         const [pk, wk] = walk(t, .2, 2.4);
         actor('naya', lerp(-120, 330, pk), GROUND + 40, 320, { walk: wk });
@@ -124,6 +135,8 @@
         fly('legumes', 1210, GROUND - 180, b.hx, b.hy - 20, lin(t, L.N5.s + 2.6, 1.4), 46);
         if (t > L.N5.s + 4) item('legumes', b.hx, b.hy - 20, 46);
         else if (t < L.N5.s + 2.6 && t > L.N5.s + 1) item('legumes', 1180, GROUND - 180, 46);
+        rays(880, 540, 360, win(t, L.N5.s + 2.4, L.N5.s + 5.4, .4));
+        burst(880, 330, clamp((t - L.N5.s - 2.6) / .8), 70);
         flyTokens(4, 880, 520, m.hx, m.hy, lin(t, L.N5.s + 2.8, 2.2), 20, 140);
         if (t > L.N5.s + 5.2) tokens(4, m.hx - 30, m.hy - 12, 13, { gap: 15 });
       },
@@ -181,6 +194,13 @@
         const hl = t > L.N8.s && t < L.N9.e ? 'bergere' : t > L.S4.s && t < L.S4.e + 1 ? 'sacha' : null;
         const sLever = win(t, L.S4.s + 1.4, L.S4.s + 3, .3), bLever = win(t, L.N9.s + .6, L.N9.s + 2.2, .3);
         const A = armoire(960, 1.45, { open, casiers, hl, lever: Math.max(sLever, bLever) });
+        if (open > 0 && open < 1) alpha(1, () => {
+          const yy = lerp(GROUND - 640, GROUND - 120, open);
+          const g = c.createLinearGradient(0, yy - 40, 0, yy + 40); g.addColorStop(0, 'rgba(120,220,255,0)'); g.addColorStop(.5, 'rgba(160,235,255,.85)'); g.addColorStop(1, 'rgba(120,220,255,0)');
+          c.fillStyle = g; c.fillRect(960 - 260, yy - 40, 520, 80);
+        });
+        burst(800, 330, clamp((t - L.N8.s - 4) / .7), 50);
+        if (t > L.S4.s + 2.4 && t < L.S4.s + 2.8) Moteur.shake(5);
         const bw = prog(t, L.N9.e - .6, 1.6);
         const b = actor('bergere', lerp(1420, 1800, bw), GROUND + 30, 380, { face: bw > 0 && bw < 1 ? 1 : -1, walk: bw > 0 && bw < 1 ? t * 9 : 0, reach: bLever > 0 || (dep > 0 && dep < 1) });
         flyTokens(4, b.hx, b.hy, 800, 330, dep, 16, 120);

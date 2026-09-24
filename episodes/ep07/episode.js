@@ -1,7 +1,8 @@
 // Épisode 7 · Le Grand Chantier de la Cabane
 (() => {
   const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, BLUE, CAST, clamp, lerp, ease, prog, lin, win, rr, circ, ell, line, poly, alpha,
-    person, actor, item, token, tokens, sky, paper, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD } = Moteur;
+    person, actor, item, token, tokens, sky, paper, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD ,
+    sparkle, burst, pop, rnd, rays } = Moteur;
 
   function tree(x, y, k) {
     c.fillStyle = '#8A5A2E'; rr(x - 16 * k, y - 160 * k, 32 * k, 160 * k, 8 * k); c.fill();
@@ -149,6 +150,7 @@
         sky({ mills: false }); foret();
         const p = prog(t, 0, L.N6b.e - .5);
         const cb = cabane(1000, p * .9);
+        for (let i = 0; i < 5; i++) { const q = (t * 1.3 + rnd(i)) % 1; sparkle(820 + (rnd(i + 2) - .5) * 60, cb.floorY - 30 - q * 60, 10 * (1 - q), 1 - q); }
         const pulley = [1330, cb.floorY - 260];
         item('poulie', pulley[0], pulley[1], 50);
         c.strokeStyle = '#B98552'; c.lineWidth = 4; line(pulley[0] - 28, pulley[1], 1480, GROUND - 170); const hy = lerp(GROUND - 40, cb.floorY - 60, (t * .25) % 1); line(pulley[0] + 28, pulley[1], pulley[0] + 28, hy);
@@ -175,7 +177,15 @@
         const fixed = t > L.N8.s + 3.5;
         sky({ mills: false, dusk: fixed ? .2 : .6 }); foret();
         const crack = t > L.N7.s + 3.2;
+        const storm = win(t, L.N7.s + .3, L.M5.s + 2, .8);
+        alpha(storm * .5, () => { c.fillStyle = '#2B3346'; c.fillRect(0, 0, W, H); });
         wind(t, win(t, L.N7.s + .5, L.N7.s + 5, .6));
+        Moteur.rain(storm);
+        const boom = L.N7.s + 3.2;
+        Moteur.lightning(1180, t > boom - .15 && t < boom + .25 ? 1 : 0);
+        Moteur.flash(t > boom - .1 && t < boom + .2 ? .7 * (1 - (t - boom + .1) / .3) : 0);
+        if (t > boom && t < boom + .7) Moteur.shake(16 * (1 - (t - boom) / .7));
+        burst(1000, GROUND - 170, clamp((t - boom) / .9), 90, '#FFB0A8');
         cabane(1000, .9, { broken: crack && !fixed, newBeam: fixed });
         actor('sacha', 520, GROUND + 40, 270, { up: t > L.S4.s && t < L.S4.e });
         actor('milo', 330, GROUND + 40, 285);
@@ -201,7 +211,10 @@
       ],
       draw(t, L) {
         sky({ mills: false }); foret();
+        Moteur.rays(1000, GROUND - 330, 700, prog(t, 0, 1.5) * .5);
         cabane(1000, 1, { flags: 1 });
+        for (let i = 0; i < 4; i++) { const t0 = L.N9.s + .5 + i * 1.3 + (i > 1 ? 2 : 0), q = clamp((t - t0) / 1.2); const fx = 500 + i * 330, fy = 180 + rnd(i) * 120; if (q > 0 && q < .35) sparkle(fx, lerp(900, fy, q / .35), 10, 1); burst(fx, fy, clamp((q - .35) / .65), 120, ['#F4C542', '#E8589A', '#3C7DD9', '#6CC4A1'][i]); }
+        Moteur.confetti(t, win(t, L.N9.s, L.N10.e, .6) * .9, 70);
         [[1250, 200], [1340, 250], [760, 180]].forEach(([x, y], i) => oiseau(x + Math.sin(t + i) * 30, y + Math.cos(t * 1.3 + i) * 10, 24, 1));
         actor('sacha', 1480, GROUND + 40, 270, { face: -1, up: t < L.N9.e });
         actor('milo', 1640, GROUND + 40, 285, { face: -1 });

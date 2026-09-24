@@ -1,7 +1,8 @@
 // Épisode 6 · La Carte Magique n'est pas Magique !
 (() => {
   const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, CAST, clamp, lerp, ease, prog, lin, win, rr, circ, ell, line, poly, alpha,
-    person, actor, item, token, tokens, sky, paper, shop, stall, counter, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD } = Moteur;
+    person, actor, item, token, tokens, sky, paper, shop, stall, counter, bubble, cross, check, arrow, glow, bigText, panel, chip, node, fly, flyTokens, FD ,
+    sparkle, burst, pop, rnd, rays } = Moteur;
 
   function ville() {
     const cols = ['#D9CBB8', '#C9B8A6', '#E3D6C3', '#BFB0A0', '#D2C1AD', '#C6D1D6'];
@@ -72,6 +73,10 @@
       reservoir(1360, 860, 'epiciere', seller);
       flows.forEach(([p, s]) => { const q = lin(t, s, 1.5); if (q > 0 && q < 1) for (let j = 0; j < p; j++) { const qq = clamp(q * 1.6 - j * .12); if (qq > 0 && qq < 1) token(lerp(700, 1220, qq), 820, 16); } });
     });
+    if (under > 0 && under < 1) { const yy = lerp(0, 1080, under); const g = c.createLinearGradient(0, yy - 60, 0, yy + 60); g.addColorStop(0, 'rgba(120,220,255,0)'); g.addColorStop(.5, 'rgba(170,240,255,.8)'); g.addColorStop(1, 'rgba(120,220,255,0)'); c.fillStyle = g; c.fillRect(0, yy - 60, W, 120); }
+    const refused = buys.find(([, p, s]) => !beeps.includes(s) && t > s + .8 && t < s + 2);
+    if (refused) { alpha(.22 * (1 + Math.sin(t * 20)) / 2, () => { c.fillStyle = RED; c.fillRect(0, 0, W, H); }); Moteur.shake(5); }
+    Moteur.fg(false);
     return { balance };
   }
   const walk = (t, a, d) => { const p = prog(t, a, d); return [p, p > 0 && p < 1 ? t * 9 : 0]; };
@@ -107,7 +112,7 @@
       },
     },
     {
-      id: 'coupe', title: 'Ce que cache la borne', phase: 'Mise en situation', lead: .4, tail: 1.4,
+      id: 'coupe', title: 'Ce que cache la borne', phase: 'Mise en situation', lead: .4, tail: 1.4, cam: false,
       lines: [
         { id: 'NY1', who: 'naya', text: 'Imaginons qu\'on puisse voir sous le magasin. Regardez bien ce qui se passe quand la borne fait bip.', pad: 1.2 },
         { id: 'NY2', who: 'naya', text: "La carte du meunier est reliée à son compte, comme par un tuyau. Dans ce compte, il y a l'argent qu'il a déjà gagné en travaillant au moulin.", pad: 1.2 },
@@ -120,7 +125,7 @@
       },
     },
     {
-      id: 'vide', title: 'Le compte vide', phase: 'Formalisation', lead: .4, tail: 1.4,
+      id: 'vide', title: 'Le compte vide', phase: 'Formalisation', lead: .4, tail: 1.4, cam: false,
       lines: [
         { id: 'N6', who: 'narr', text: 'Troisième achat : un beau fromage, à quatre jetons.', pad: .6 },
         { id: 'N7', who: 'narr', text: "Mais le compte n'en contient plus que deux. Le tuyau ne peut pas faire passer ce qui n'existe pas. La borne refuse.", pad: 1.4 },
@@ -150,6 +155,7 @@
           node(w, x, y, 62, { a: prog(t, L.N9.s + 1 + i * .8, .5), badge: 'farine' });
           const q = lin(t, L.N9.s + 2 + i * 1.6, 1.6);
           if (q > 0 && q < 1) flyTokens(3, x + 70, y, 1380, 700, q, 16, 60);
+          burst(1400, 700, clamp((t - (L.N9.s + 3.6 + i * 1.6)) / .6), 50);
         });
         const n = 2 + Math.floor(lin(t, L.N9.s + 2, 4.8) * 9 + 1e-6);
         reservoir(1400, 800, 'meunier', n, {});

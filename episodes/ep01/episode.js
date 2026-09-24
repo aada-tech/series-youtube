@@ -1,7 +1,8 @@
 // Épisode 1 · L'Énigme des Pommes et des Briques
 (() => {
   const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, CAST, clamp, lerp, ease, prog, lin, win, mix, rr, circ, ell, line, alpha,
-    person, item, token, sky, paper, stall, counter, house, bubble, cross, check, arrow, glow, bigText, node, talk, spk } = Moteur;
+    person, item, token, sky, paper, stall, counter, house, bubble, cross, check, arrow, glow, bigText, node, talk, spk,
+    sparkle, burst, pop, rnd, rays } = Moteur;
 
   function goods(kind, x, k) {
     const y = GROUND - 162 * k;
@@ -154,6 +155,8 @@
         const squeeze = win(t, L.N8.s + .8, L.N8.e - .2, 1.2);
         const R = 330 * (1 - .3 * squeeze);
         const red = t > L.N9.s ? (.55 + .45 * Math.sin((t - L.N9.s) * 7)) * prog(t, L.N9.s, .5) : 0;
+        if (t > L.N9.s && t < L.N9.s + .6) Moteur.shake(8 * (1 - (t - L.N9.s) / .6));
+        glow(960, 500, 520, red * .25);
         net(960, 500, R, 86, {
           nodes: { sacha: prog(t, 0, .5), menuisier: prog(t, .2, .5), forgeronne: prog(t, .4, .5), bergere: prog(t, L.N6.s + 1.2, .5), meunier: prog(t, L.N7.s, .5) },
           arrows: [prog(t, .4, 1), prog(t, 1.1, 1), prog(t, L.N6.s + 1.5, 1), prog(t, L.N6.e - 1.8, 1), prog(t, L.N7.s + 2, 1)],
@@ -211,27 +214,50 @@
       draw(t, L) {
         paper();
         const a = L.N10.s, b = L.N11.s, d = L.N12.s;
-        const sc = prog(t, a - .2, .8), bake = prog(t, a + 1.4, 2.2);
-        const sp = prog(t, b + 2.4, 1.2), up = prog(t, d, .8);
-        const y = lerp(450, 330, up);
-        const markOn = clamp((t - (b + .75)) / .1);
+        // le four à argile
+        const kiln = win(t, a - .6, b + .4, .6);
+        alpha(kiln, () => {
+          glow(960, 640, 420, .6 + .15 * Math.sin(t * 9));
+          c.fillStyle = '#A5532E'; c.beginPath(); c.arc(960, 720, 270, Math.PI, 0); c.lineTo(1230, 800); c.lineTo(690, 800); c.closePath(); c.fill();
+          c.strokeStyle = 'rgba(70,30,15,.3)'; c.lineWidth = 4;
+          for (let r_ = 120; r_ < 270; r_ += 38) { c.beginPath(); c.arc(960, 720, r_, Math.PI, 0); c.stroke(); }
+          c.fillStyle = '#2A1A12'; c.beginPath(); c.arc(960, 720, 140, Math.PI, 0); c.closePath(); c.fill();
+          for (let i = 0; i < 11; i++) {
+            const fx = 850 + i * 22, fh = 60 + 38 * Math.abs(Math.sin(t * 11 + i * 1.9));
+            c.fillStyle = i % 2 ? '#FFB23E' : '#FF7A2E'; c.beginPath(); c.ellipse(fx, 720 - fh / 2, 16, fh / 2, 0, 0, Math.PI * 2); c.fill();
+            c.fillStyle = '#FFE08A'; c.beginPath(); c.ellipse(fx, 720 - fh * .3, 7, fh * .25, 0, 0, Math.PI * 2); c.fill();
+          }
+          for (let i = 0; i < 10; i++) { const q = (t * .8 + rnd(i)) % 1; sparkle(900 + rnd(i + 4) * 120, 700 - q * 380, 8 * (1 - q), 1 - q, '#FFB23E'); }
+          c.fillStyle = '#7E3F22'; rr(680, 790, 560, 40, 12); c.fill();
+        });
+        const bake = prog(t, a + .8, 2.4), rise = prog(t, a + 3.2, 1.1);
+        const sp = prog(t, b + 2.6, 1.2), up = prog(t, d, .8);
+        const y = lerp(lerp(690, 430, rise), 330, up);
+        glow(960, y, 260, bake * (1 - rise * .6) * .9);
+        const markT = b + .75, markOn = clamp((t - markT) / .08);
+        rays(960, y, 460, win(t, markT, d + .8, .6) * (1 - sp * .5));
         for (let i = 0; i < 5; i++) {
           if (i === 2) continue;
-          alpha(sp, () => token(lerp(960, 960 + (i - 2) * 210, sp), y, 88, 1, 1));
+          const xi = lerp(960, 960 + (i - 2) * 210, sp);
+          alpha(sp, () => token(xi, y, 88, 1, 1, sp < 1 ? Math.cos(sp * Math.PI * 2) : 1));
+          burst(xi, y, clamp((t - b - 3.6) / .7), 70);
         }
-        token(960, y, lerp(150, 88, sp) * sc, bake, markOn);
+        token(960, y, lerp(lerp(78, 150, rise), 88, sp) * pop(prog(t, a - .2, .8)), bake, markOn);
         const s1 = prog(t, b + .2, .55), s2 = prog(t, b + 1.0, .6);
-        const sy = lerp(-260, 260, s1) - s2 * 560;
+        const sy = lerp(-260, y - 190, s1) - s2 * 560;
         if (t > b && s2 < 1) {
           c.fillStyle = '#8A5A2E'; rr(925, sy - 170, 70, 180, 16); c.fill();
           c.fillStyle = '#6B4423'; rr(850, sy, 220, 40, 10); c.fill();
         }
+        if (t > markT && t < markT + .35) Moteur.shake(14 * (1 - (t - markT) / .35));
+        burst(960, y, clamp((t - markT) / .8), 130);
         const order = ['sacha', 'menuisier', 'forgeronne', 'bergere', 'meunier'];
         order.forEach((w, i) => {
           const x = 960 + (i - 2) * 230, ok = prog(t, d + 1 + i * .6, .4);
-          node(w, x, 740, 72, { a: prog(t, d + .3, .6), badge: false, hl: ok * .6 });
+          node(w, x, 740, 72, { a: prog(t, d + .3 + i * .12, .6), badge: false, hl: ok * .6 });
           check(x + 52, 740 - 52, 26, ok);
         });
+        Moteur.confetti(t, win(t, d + 4.2, L.N12.e + 2, .5), 70);
       },
     },
     {
@@ -254,6 +280,8 @@
         ];
         const got = {};
         T.forEach(([buyer, , it, s, d]) => { if (t >= s + d) got[buyer] = it; });
+        rays(cx, cy, 380, prog(t, .9, 1.2) * .8);
+        burst(cx, cy, clamp((t - .9) / .9), 90);
         net(cx, cy, R, nr, {
           arrows: [1, 1, 1, 1, 1], arrowAlpha: 1 - prog(t, .2, 1), red: 1,
           spokes: prog(t, .9, 1.2), hub: prog(t, .9, .8), got,

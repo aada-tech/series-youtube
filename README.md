@@ -4,4 +4,4 @@ Série éducative YouTube sur la monnaie et l'économie pour les 6-9 ans (cycle 
 
 - [Bible pédagogique et scénarisation](bible-pedagogique.md) : fondements, cadre déontologique, ergonomie multimédia, personnages, curriculum et fiches des 7 épisodes.
 
-> La fin de l'épisode 4 et les épisodes 5 à 7 sont une proposition de complétion, signalée dans la bible, à relire et valider.
+> Source : « Mini-Série Éducation Financière Enfants » (PDF, 13 pages).

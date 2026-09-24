@@ -1,0 +1,915 @@
+<title>L'Énigme des Pommes et des Briques</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&display=swap">
+<style>
+  :root {
+    --bg: #EDF0EA;
+    --surface: #FFFFFF;
+    --ink: #22262A;
+    --muted: #59625C;
+    --line: #D3DAD0;
+    --accent: #B4552F;
+    --accent-ink: #FFFFFF;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #141718;
+      --surface: #1F2426;
+      --ink: #E7EBE6;
+      --muted: #9CA59F;
+      --line: #343B3D;
+      --accent: #E3875F;
+      --accent-ink: #1A1A1A;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #141718;
+    --surface: #1F2426;
+    --ink: #E7EBE6;
+    --muted: #9CA59F;
+    --line: #343B3D;
+    --accent: #E3875F;
+    --accent-ink: #1A1A1A;
+    color-scheme: dark;
+  }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 17px/1.55 "Atkinson Hyperlegible", Verdana, sans-serif;
+  }
+  .wrap {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-inline: 16px;
+    padding-block: 28px 56px;
+    display: grid;
+    gap: 32px;
+  }
+  .eyebrow {
+    margin: 0;
+    font: 700 13px/1.2 "Atkinson Hyperlegible", Verdana, sans-serif;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+  h1 {
+    margin: 6px 0 10px;
+    font: 600 clamp(30px, 5.2vw, 50px)/1.08 "Fredoka", "Trebuchet MS", sans-serif;
+    text-wrap: balance;
+  }
+  h2 {
+    margin: 0 0 12px;
+    font: 600 22px/1.2 "Fredoka", "Trebuchet MS", sans-serif;
+  }
+  .lede { margin: 0; max-width: 65ch; color: var(--muted); }
+  .stage {
+    border-radius: 18px;
+    overflow: hidden;
+    background: #F6F7F2;
+    box-shadow: 0 0 0 1px var(--line), 0 14px 34px rgba(0, 0, 0, .13);
+  }
+  canvas { display: block; width: 100%; max-width: 100%; height: auto; aspect-ratio: 16 / 9; }
+  .controls { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; }
+  #play {
+    font: 600 17px/1 "Fredoka", "Trebuchet MS", sans-serif;
+    background: var(--accent);
+    color: var(--accent-ink);
+    border: 0;
+    border-radius: 999px;
+    padding: 12px 24px;
+    min-width: 104px;
+    cursor: pointer;
+  }
+  #play:focus-visible, .chap button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  #seek { flex: 1 1 220px; accent-color: var(--accent); }
+  .tc { font-variant-numeric: tabular-nums; color: var(--muted); }
+  .toggles { display: flex; gap: 8px 22px; flex-wrap: wrap; margin-top: 10px; color: var(--muted); font-size: 15px; }
+  .toggles label { display: inline-flex; gap: 8px; align-items: center; cursor: pointer; }
+  .toggles input { accent-color: var(--accent); }
+  .cols { display: grid; grid-template-columns: 1.45fr 1fr; gap: 32px; align-items: start; }
+  @media (max-width: 760px) { .cols { grid-template-columns: 1fr; } }
+  #chapters { list-style: none; padding: 0; margin: 0; display: grid; gap: 2px; }
+  .chap button {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 12px;
+    text-align: left;
+    padding: 10px 12px;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+  }
+  .chap button:hover { background: var(--surface); }
+  .chap.on button { background: var(--surface); }
+  .chap.on .tc { color: var(--accent); font-weight: 700; }
+  .chap .phase { display: block; font-size: 13px; color: var(--muted); }
+  .fiche { display: grid; gap: 16px; margin: 0; }
+  .fiche dt { font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+  .fiche dd { margin: 3px 0 0; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto; } }
+</style>
+
+<main class="wrap">
+  <header>
+    <p class="eyebrow">Le Village des Trois Moulins · Épisode 1</p>
+    <h1>L'Énigme des Pommes et des Briques</h1>
+    <p class="lede">Animatique de travail entièrement dessinée en code. Le rythme suit le script de voix off : en attendant l'enregistrement de la voix, les sous-titres et une voix de synthèse d'aperçu permettent de juger le montage.</p>
+  </header>
+
+  <section aria-label="Lecteur">
+    <div class="stage"><canvas id="cv" width="1920" height="1080" aria-label="Animation de l'épisode 1"></canvas></div>
+    <div class="controls">
+      <button id="play" type="button">Lire</button>
+      <input id="seek" type="range" min="0" max="1000" step="1" value="0" aria-label="Position dans l'épisode">
+      <span id="time" class="tc">0:00 / 0:00</span>
+    </div>
+    <div class="toggles">
+      <label><input type="checkbox" id="subs" checked> Sous-titres</label>
+      <label><input type="checkbox" id="voice"> Voix de synthèse (aperçu)</label>
+    </div>
+  </section>
+
+  <section class="cols">
+    <div>
+      <h2>Déroulé</h2>
+      <ol id="chapters"></ol>
+    </div>
+    <div>
+      <h2>Fiche</h2>
+      <dl class="fiche">
+        <div><dt>Notion</dt><dd>Le troc, ses limites et l'émergence de la monnaie</dd></div>
+        <div><dt>Objectif</dt><dd>Comprendre la monnaie comme intermédiaire universel d'échange.</dd></div>
+        <div><dt>Durée</dt><dd><span id="dur" class="tc">–</span> pour une cible de 4 min 30 s</dd></div>
+        <div><dt>Dispositif visuel</dt><dd>Le schéma des envies s'emmêle et clignote en rouge sous le troc, puis se réorganise en tracés verts qui convergent vers le jeton commun.</dd></div>
+      </dl>
+    </div>
+  </section>
+</main>
+
+<script>
+(() => {
+  const W = 1920, H = 1080, GROUND = 860;
+  const cv = document.getElementById('cv');
+  const c = cv.getContext('2d');
+
+  const INK = '#2B2E33', RED = '#D64541', GREEN = '#2F9E62', CLAY = '#C0643A', RAW = '#A39485', PAPER = '#F6F7F2';
+  const FD = '"Fredoka", "Trebuchet MS", sans-serif';
+  const FB = '"Atkinson Hyperlegible", Verdana, sans-serif';
+
+  // ---------- outils ----------
+  const clamp = (v, a = 0, b = 1) => Math.max(a, Math.min(b, v));
+  const lerp = (a, b, p) => a + (b - a) * p;
+  const ease = x => x < .5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+  const prog = (t, a, d) => ease(clamp((t - a) / d));
+  const lin = (t, a, d) => clamp((t - a) / d);
+  const win = (t, a, b, f) => clamp((t - a) / f) * clamp((b - t) / f);
+  function hex(h) { const n = parseInt(h.slice(1), 16); return [n >> 16, (n >> 8) & 255, n & 255]; }
+  function mix(a, b, p) {
+    const A = hex(a), B = hex(b);
+    return 'rgb(' + A.map((v, i) => Math.round(lerp(v, B[i], p))).join(',') + ')';
+  }
+  function rr(x, y, w, h, r) { c.beginPath(); c.roundRect(x, y, w, h, r); }
+  function circ(x, y, r) { c.beginPath(); c.arc(x, y, Math.max(0, r), 0, Math.PI * 2); }
+  function ell(x, y, rx, ry, rot = 0) { c.beginPath(); c.ellipse(x, y, Math.max(0, rx), Math.max(0, ry), rot, 0, Math.PI * 2); }
+  function line(x1, y1, x2, y2) { c.beginPath(); c.moveTo(x1, y1); c.lineTo(x2, y2); c.stroke(); }
+  function alpha(a, fn) { if (a <= 0) return; c.save(); c.globalAlpha *= a; fn(); c.restore(); }
+
+  // ---------- personnages ----------
+  const KIND = { kid: 17, teen: 15.5, adult: 13.5 };
+  const CAST = {
+    narr:       { name: 'Narratrice', cap: '#D5DBE0' },
+    sacha:      { name: 'Sacha', kind: 'kid', shirt: '#E8833A', skin: '#E9B48A', hair: '#3A2A20', style: 'short', ring: '#E8833A', cap: '#FFB27E' },
+    naya:       { name: 'Naya', kind: 'teen', shirt: '#7A5BC4', skin: '#8D5A3B', hair: '#1E1614', style: 'bun', ring: '#7A5BC4', cap: '#CDB8FF' },
+    menuisier:  { name: 'Le menuisier', kind: 'adult', shirt: '#6F8FA6', apron: '#9B6A3E', skin: '#C68B5E', hair: '#4A3524', style: 'short', beard: true, ring: '#9B6A3E', cap: '#E6BD8F' },
+    forgeronne: { name: 'La forgeronne', kind: 'adult', shirt: '#B5483C', apron: '#4F5A66', skin: '#F1C9A5', hair: '#8A3B1E', style: 'tail', ring: '#4F5A66', cap: '#F2A094' },
+    bergere:    { name: 'La bergère', kind: 'adult', shirt: '#5E9A5A', skin: '#A86B45', hair: '#2B1D16', style: 'curly', ring: '#5E9A5A', cap: '#AEDBA9' },
+    meunier:    { name: 'Le meunier', kind: 'adult', shirt: '#EFE3C4', apron: '#D9B64A', skin: '#F0C6A0', hair: '#9A9A9A', style: 'bald', ring: '#C9A43A', cap: '#F2DC8C' },
+  };
+
+  function head(P, open) {
+    const r = KIND[P.kind];
+    c.fillStyle = P.hair;
+    if (P.style === 'tail') { ell(-r * .95, r * .2, r * .36, r * .62); c.fill(); }
+    if (P.style === 'bun') { circ(0, -r * 1.08, r * .42); c.fill(); }
+    if (P.style === 'curly') for (const a of [-2.7, -2.15, -1.57, -1, -.45]) { circ(Math.cos(a) * r * .95, Math.sin(a) * r * .95 + r * .08, r * .4); c.fill(); }
+    if (P.style !== 'bald') { circ(0, -r * .12, r * 1.04); c.fill(); }
+    c.fillStyle = P.skin; circ(0, r * .06, r * .94); c.fill();
+    if (P.style === 'bald') { c.fillStyle = P.hair; circ(-r * .9, -r * .05, r * .26); c.fill(); circ(r * .9, -r * .05, r * .26); c.fill(); }
+    if (P.beard) { c.fillStyle = P.hair; c.beginPath(); c.arc(0, r * .15, r * .86, .08 * Math.PI, .92 * Math.PI); c.closePath(); c.fill(); }
+    c.fillStyle = INK; circ(-r * .35, 0, r * .1); c.fill(); circ(r * .35, 0, r * .1); c.fill();
+    c.fillStyle = 'rgba(225,105,85,.25)'; circ(-r * .56, r * .33, r * .16); c.fill(); circ(r * .56, r * .33, r * .16); c.fill();
+    if (open > .08) { c.fillStyle = '#7A2E2E'; ell(0, r * .5, r * .2, r * .05 + open * r * .17); c.fill(); }
+    else { c.strokeStyle = P.beard ? '#F3E3D3' : INK; c.lineWidth = r * .08; c.lineCap = 'round'; c.beginPath(); c.arc(0, r * .28, r * .22, .2 * Math.PI, .8 * Math.PI); c.stroke(); }
+  }
+
+  // Dessine un personnage debout, pieds en (x, y), hauteur h. Renvoie la position de la main avant.
+  function person(who, x, y, h, o = {}) {
+    const P = CAST[who], r = KIND[P.kind], s = h / 100, f = o.face || 1;
+    const adult = P.kind === 'adult';
+    const legTop = adult ? -42 : -38, bodyTop = -100 + 2 * r - 3, bw = adult ? 34 : 30;
+    const sw = o.walk ? Math.sin(o.walk) * 7 : 0, bob = o.walk ? Math.abs(Math.cos(o.walk)) * 1.6 : 0;
+    c.save(); c.translate(x, y); c.scale(s * f, s);
+    if (o.hl) { c.fillStyle = `rgba(255,200,70,${.5 * o.hl})`; ell(0, 0, 38, 7.5); c.fill(); }
+    c.fillStyle = 'rgba(40,55,40,.13)'; ell(0, 0, 24, 4.5); c.fill();
+    c.translate(0, -bob);
+    c.lineCap = 'round';
+    c.strokeStyle = '#3E4A5C'; c.lineWidth = 8;
+    line(-6, legTop, -6 + sw, -3); line(6, legTop, 6 - sw, -3);
+    c.fillStyle = INK; ell(-4 + sw, -2, 6.5, 3.6); c.fill(); ell(8 - sw, -2, 6.5, 3.6); c.fill();
+    c.strokeStyle = P.shirt; c.lineWidth = 7;
+    const back = [-bw / 2 - 3 - sw * .4, legTop + 4];
+    line(-bw / 2 + 3, bodyTop + 6, back[0], back[1]);
+    c.fillStyle = P.skin; circ(back[0], back[1], 4); c.fill();
+    c.fillStyle = P.shirt; rr(-bw / 2, bodyTop, bw, legTop - bodyTop + 4, 9); c.fill();
+    if (P.apron) { c.fillStyle = P.apron; rr(-bw / 2 + 5, bodyTop + 10, bw - 10, legTop - bodyTop + 6, 4); c.fill(); }
+    const hand = o.reach ? [bw / 2 + 15, bodyTop + 9] : [bw / 2 + 3 + sw * .4, legTop + 4];
+    c.strokeStyle = P.shirt; c.lineWidth = 7; line(bw / 2 - 3, bodyTop + 6, hand[0], hand[1]);
+    c.fillStyle = P.skin; circ(hand[0], hand[1], 4); c.fill();
+    c.save(); c.translate(0, -100 + r); head(P, o.open || 0); c.restore();
+    c.restore();
+    return { hx: x + f * hand[0] * s, hy: y + (hand[1] - bob) * s, top: y - h };
+  }
+
+  // ---------- objets ----------
+  const ITEMS = {
+    pomme(s) {
+      c.fillStyle = '#D9443A'; circ(0, s * .1, s * .8); c.fill();
+      c.fillStyle = 'rgba(255,255,255,.35)'; ell(-s * .3, -s * .15, s * .16, s * .24, -.4); c.fill();
+      c.strokeStyle = '#5B3A22'; c.lineWidth = s * .12; c.lineCap = 'round'; line(0, -s * .55, s * .1, -s * .92);
+      c.save(); c.translate(s * .32, -s * .74); c.rotate(-.5); c.fillStyle = '#4E9A4B'; ell(0, 0, s * .3, s * .13); c.fill(); c.restore();
+    },
+    panier(s) {
+      [[-.45, -.32], [.45, -.32], [0, -.5]].forEach(([dx, dy]) => { c.save(); c.translate(dx * s, dy * s); ITEMS.pomme(s * .42); c.restore(); });
+      c.fillStyle = '#B07A45'; c.beginPath(); c.moveTo(-s, -.2 * s); c.lineTo(s, -.2 * s); c.lineTo(.75 * s, .8 * s); c.lineTo(-.75 * s, .8 * s); c.closePath(); c.fill();
+      c.strokeStyle = '#8A5A2E'; c.lineWidth = s * .08;
+      line(-.9 * s, .15 * s, .9 * s, .15 * s); line(-.82 * s, .48 * s, .82 * s, .48 * s);
+    },
+    planche(s) {
+      c.rotate(-.1);
+      c.fillStyle = '#C98E55'; rr(-s * 1.1, -s * .3, s * 2.2, s * .6, s * .08); c.fill();
+      c.strokeStyle = '#8A5A2E'; c.lineWidth = s * .06; c.stroke();
+      c.strokeStyle = 'rgba(120,75,35,.55)'; c.lineWidth = s * .04;
+      c.beginPath(); c.moveTo(-s * .95, -s * .1); c.bezierCurveTo(-s * .3, -s * .2, s * .2, 0, s * .95, -s * .12); c.stroke();
+      c.beginPath(); c.moveTo(-s * .95, s * .12); c.bezierCurveTo(-s * .2, s * .02, s * .3, s * .2, s * .95, s * .1); c.stroke();
+      c.fillStyle = 'rgba(120,75,35,.55)'; ell(s * .45, -s * .02, s * .1, s * .06); c.fill();
+    },
+    clous(s) {
+      [-1, 0, 1].forEach(i => {
+        c.save(); c.translate(i * s * .45, 0); c.rotate(i * .15);
+        c.strokeStyle = '#7D8894'; c.lineWidth = s * .15; c.lineCap = 'butt'; line(0, -s * .66, 0, s * .6);
+        c.fillStyle = '#7D8894'; c.beginPath(); c.moveTo(-s * .075, s * .6); c.lineTo(s * .075, s * .6); c.lineTo(0, s * .85); c.closePath(); c.fill();
+        c.fillStyle = '#4F5A66'; rr(-s * .24, -s * .82, s * .48, s * .17, s * .05); c.fill();
+        c.restore();
+      });
+    },
+    laine(s) {
+      c.fillStyle = '#F1E4CC'; circ(0, 0, s * .85); c.fill();
+      c.strokeStyle = '#C3AC82'; c.lineWidth = s * .07; c.stroke();
+      c.lineWidth = s * .06;
+      [[-.3, .9], [0, 1], [.35, .85]].forEach(([dx, k]) => { c.beginPath(); c.ellipse(dx * s, 0, s * .3 * k, s * .8 * k, .5, -1.2, 1.2); c.stroke(); });
+      c.beginPath(); c.moveTo(s * .6, s * .55); c.quadraticCurveTo(s * 1.1, s * .7, s * 1.05, s * 1.0); c.stroke();
+    },
+    farine(s) {
+      c.fillStyle = '#EFE3C4'; c.strokeStyle = '#BFA877'; c.lineWidth = s * .07;
+      c.beginPath(); c.moveTo(-s * .45, -s * .6); c.quadraticCurveTo(-s * .95, s * .1, -s * .7, s * .85); c.lineTo(s * .7, s * .85); c.quadraticCurveTo(s * .95, s * .1, s * .45, -s * .6); c.closePath(); c.fill(); c.stroke();
+      c.fillStyle = '#EFE3C4'; c.beginPath(); c.moveTo(-s * .45, -s * .6); c.lineTo(-s * .55, -s * .9); c.lineTo(s * .55, -s * .9); c.lineTo(s * .45, -s * .6); c.closePath(); c.fill(); c.stroke();
+      c.strokeStyle = '#A8894C'; line(-s * .5, -s * .62, s * .5, -s * .62);
+      c.strokeStyle = '#C9A43A'; c.lineWidth = s * .08; line(0, s * .55, 0, -s * .1);
+      [-.05, .12, .28].forEach(y => { line(0, y * s, -s * .18, (y - .16) * s); line(0, y * s, s * .18, (y - .16) * s); });
+    },
+    paquet(s) {
+      c.fillStyle = '#6FA3C9'; rr(-s * .8, -s * .6, s * 1.6, s * 1.3, s * .1); c.fill();
+      c.fillStyle = '#F4D35E'; c.fillRect(-s * .12, -s * .6, s * .24, s * 1.3); c.fillRect(-s * .8, -s * .05, s * 1.6, s * .22);
+      c.strokeStyle = '#F4D35E'; c.lineWidth = s * .12; c.beginPath(); c.ellipse(-s * .25, -s * .75, s * .25, s * .14, -.4, 0, Math.PI * 2); c.stroke(); c.beginPath(); c.ellipse(s * .25, -s * .75, s * .25, s * .14, .4, 0, Math.PI * 2); c.stroke();
+    },
+    jeton(s) { token(0, 0, s, 1, 1); },
+  };
+  function item(name, x, y, s, a = 1) { alpha(a, () => { c.translate(x, y); ITEMS[name](s); }); }
+
+  function token(x, y, r, bake = 1, mark = 1) {
+    const col = mix(RAW, CLAY, bake), rim = mix('#7F7368', '#9E4B28', bake);
+    c.fillStyle = rim; circ(x, y + r * .09, r); c.fill();
+    c.fillStyle = col; circ(x, y, r); c.fill();
+    c.strokeStyle = rim; c.lineWidth = r * .07; circ(x, y, r * .78); c.stroke();
+    if (mark > 0) alpha(mark, () => {
+      c.translate(x, y); c.fillStyle = c.strokeStyle = '#F6DCC8'; c.lineWidth = r * .09; c.lineCap = 'round';
+      for (let k = 0; k < 4; k++) { c.rotate(Math.PI / 2); line(0, 0, 0, -r * .52); c.fillRect(r * .03, -r * .52, r * .17, r * .3); }
+      circ(0, 0, r * .1); c.fill();
+    });
+  }
+
+  // ---------- décors ----------
+  function windmill(x, y, k, ang) {
+    c.fillStyle = '#F4F0E8'; c.strokeStyle = '#D6CEBF'; c.lineWidth = 3 * k;
+    c.beginPath(); c.moveTo(x - 42 * k, y); c.lineTo(x + 42 * k, y); c.lineTo(x + 28 * k, y - 175 * k); c.lineTo(x - 28 * k, y - 175 * k); c.closePath(); c.fill(); c.stroke();
+    c.fillStyle = '#B55D3C'; c.beginPath(); c.moveTo(x - 38 * k, y - 170 * k); c.lineTo(x + 38 * k, y - 170 * k); c.lineTo(x, y - 222 * k); c.closePath(); c.fill();
+    c.save(); c.translate(x, y - 178 * k); c.rotate(ang);
+    for (let i = 0; i < 4; i++) {
+      c.rotate(Math.PI / 2);
+      c.strokeStyle = '#7B6A58'; c.lineWidth = 5 * k; line(0, 0, 0, -125 * k);
+      c.fillStyle = '#FFFFFF'; c.fillRect(2 * k, -125 * k, 26 * k, 92 * k);
+      c.strokeStyle = '#A9B2B6'; c.lineWidth = 2 * k; c.strokeRect(2 * k, -125 * k, 26 * k, 92 * k);
+    }
+    c.fillStyle = '#7B6A58'; circ(0, 0, 8 * k); c.fill();
+    c.restore();
+  }
+  function sky(ang = .35) {
+    const g = c.createLinearGradient(0, 0, 0, GROUND);
+    g.addColorStop(0, '#CDE2EC'); g.addColorStop(1, '#EEF4EA');
+    c.fillStyle = g; c.fillRect(0, 0, W, H);
+    windmill(1390, GROUND - 150, .55, ang); windmill(1570, GROUND - 175, .63, ang + .5); windmill(1750, GROUND - 150, .5, ang + 1.1);
+    c.fillStyle = '#C3D9AE';
+    c.beginPath(); c.moveTo(0, GROUND - 110); c.bezierCurveTo(420, GROUND - 250, 820, GROUND - 60, 1220, GROUND - 170);
+    c.bezierCurveTo(1480, GROUND - 240, 1760, GROUND - 150, W, GROUND - 190); c.lineTo(W, GROUND); c.lineTo(0, GROUND); c.closePath(); c.fill();
+    c.fillStyle = '#D5E4BF'; c.fillRect(0, GROUND, W, H - GROUND);
+    c.fillStyle = '#B3CB97'; c.fillRect(0, GROUND, W, 6);
+  }
+  function paper() {
+    c.fillStyle = PAPER; c.fillRect(0, 0, W, H);
+    c.strokeStyle = '#E3E8DF'; c.lineWidth = 2;
+    for (let x = 0; x <= W; x += 60) line(x, 0, x, H);
+    for (let y = 0; y <= H; y += 60) line(0, y, W, y);
+  }
+  function stall(x, k, awn) {
+    const w = 360 * k, top = GROUND - 470 * k;
+    c.fillStyle = '#8A5A2E';
+    c.fillRect(x - w / 2 + 8 * k, top + 40 * k, 14 * k, GROUND - top - 40 * k);
+    c.fillRect(x + w / 2 - 22 * k, top + 40 * k, 14 * k, GROUND - top - 40 * k);
+    const n = 6, sw = w / n;
+    for (let i = 0; i < n; i++) {
+      c.fillStyle = i % 2 ? '#FBF8F1' : awn;
+      c.fillRect(x - w / 2 + i * sw, top, sw + .5, 56 * k);
+      circ(x - w / 2 + (i + .5) * sw, top + 56 * k, sw / 2); c.fill();
+    }
+  }
+  function counter(x, k) {
+    const w = 380 * k;
+    c.fillStyle = '#C89A67'; rr(x - w / 2, GROUND - 150 * k, w, 150 * k, 6 * k); c.fill();
+    c.strokeStyle = 'rgba(110,70,30,.22)'; c.lineWidth = 3 * k;
+    for (let y = GROUND - 110 * k; y < GROUND; y += 40 * k) line(x - w / 2 + 10 * k, y, x + w / 2 - 10 * k, y);
+    c.fillStyle = '#A87B4E'; rr(x - w / 2 - 10 * k, GROUND - 162 * k, w + 20 * k, 24 * k, 6 * k); c.fill();
+  }
+  function goods(kind, x, k) {
+    const y = GROUND - 162 * k;
+    if (kind === 'bois') { item('planche', x - 50 * k, y - 18 * k, 62 * k); item('planche', x + 40 * k, y - 48 * k, 62 * k); }
+    if (kind === 'forge') {
+      c.fillStyle = '#4A525C';
+      c.beginPath(); c.moveTo(x - 140 * k, y - 70 * k); c.lineTo(x + 10 * k, y - 70 * k); c.lineTo(x - 10 * k, y - 40 * k); c.lineTo(x - 40 * k, y - 40 * k);
+      c.lineTo(x - 30 * k, y); c.lineTo(x - 110 * k, y); c.lineTo(x - 100 * k, y - 40 * k); c.quadraticCurveTo(x - 140 * k, y - 45 * k, x - 140 * k, y - 70 * k); c.closePath(); c.fill();
+      item('clous', x + 90 * k, y - 45 * k, 42 * k);
+    }
+    if (kind === 'laine') { item('laine', x - 85 * k, y - 36 * k, 38 * k); item('laine', x, y - 42 * k, 44 * k); item('laine', x + 85 * k, y - 36 * k, 38 * k); }
+  }
+  function crate(x, k = 1) {
+    [[-60, -130], [-20, -140], [20, -132], [60, -138], [-40, -175], [0, -178], [40, -172]].forEach(([dx, dy]) => item('pomme', x + dx * k, GROUND + dy * k + 10 * k, 26 * k));
+    c.fillStyle = '#B07A45'; rr(x - 95 * k, GROUND - 120 * k, 190 * k, 120 * k, 6 * k); c.fill();
+    c.strokeStyle = '#8A5A2E'; c.lineWidth = 5 * k; line(x - 95 * k, GROUND - 80 * k, x + 95 * k, GROUND - 80 * k); line(x - 95 * k, GROUND - 40 * k, x + 95 * k, GROUND - 40 * k);
+  }
+  function house(x, y, k) {
+    c.fillStyle = '#F4EEE4'; rr(x - 110 * k, y - 150 * k, 220 * k, 150 * k, 6 * k); c.fill();
+    c.strokeStyle = '#D6CEBF'; c.lineWidth = 4 * k; c.stroke();
+    c.fillStyle = CLAY; c.beginPath(); c.moveTo(x - 140 * k, y - 140 * k); c.lineTo(x, y - 260 * k); c.lineTo(x + 140 * k, y - 140 * k); c.closePath(); c.fill();
+    c.fillStyle = '#8A5A2E'; rr(x - 28 * k, y - 90 * k, 56 * k, 90 * k, 26 * k); c.fill();
+    c.fillStyle = '#BFDDEA'; rr(x + 45 * k, y - 115 * k, 45 * k, 45 * k, 6 * k); c.fill(); rr(x - 90 * k, y - 115 * k, 45 * k, 45 * k, 6 * k); c.fill();
+  }
+
+  // ---------- signalisation ----------
+  function bubble(x, y, w, h, tx, ty, a) {
+    alpha(a, () => {
+      c.fillStyle = '#FFFFFF'; c.strokeStyle = INK; c.lineWidth = 4;
+      for (let i = 0; i < 3; i++) { const p = .2 + i * .22; circ(lerp(tx, x, p), lerp(ty, y + h / 2 * Math.sign(ty - y), p), 7 + i * 4); c.fill(); c.stroke(); }
+      rr(x - w / 2, y - h / 2, w, h, Math.min(h / 2, 60)); c.fill(); c.stroke();
+    });
+  }
+  function cross(x, y, r, a = 1) {
+    alpha(a, () => { c.strokeStyle = RED; c.lineWidth = r * .2; c.lineCap = 'round'; line(x - r * .7, y - r * .7, x + r * .7, y + r * .7); line(x + r * .7, y - r * .7, x - r * .7, y + r * .7); });
+  }
+  function check(x, y, r, a = 1) {
+    alpha(a, () => {
+      c.fillStyle = GREEN; circ(x, y, r); c.fill();
+      c.strokeStyle = '#FFFFFF'; c.lineWidth = r * .22; c.lineCap = 'round'; c.lineJoin = 'round';
+      c.beginPath(); c.moveTo(x - r * .45, y + r * .02); c.lineTo(x - r * .1, y + r * .38); c.lineTo(x + r * .5, y - r * .35); c.stroke();
+    });
+  }
+  function arrow(x1, y1, x2, y2, o = {}) {
+    const { col = INK, lw = 8, p = 1, a = 1, cut1 = 0, cut2 = 0, head = 26 } = o;
+    if (p <= 0 || a <= 0) return;
+    const dx = x2 - x1, dy = y2 - y1, L = Math.hypot(dx, dy), ux = dx / L, uy = dy / L;
+    const sx = x1 + ux * cut1, sy = y1 + uy * cut1, ex = x2 - ux * cut2, ey = y2 - uy * cut2;
+    const px = lerp(sx, ex, p), py = lerp(sy, ey, p);
+    alpha(a, () => {
+      c.strokeStyle = c.fillStyle = col; c.lineWidth = lw; c.lineCap = 'round';
+      line(sx, sy, px - ux * head * .6, py - uy * head * .6);
+      c.beginPath(); c.moveTo(px, py);
+      c.lineTo(px - ux * head - uy * head * .55, py - uy * head + ux * head * .55);
+      c.lineTo(px - ux * head + uy * head * .55, py - uy * head - ux * head * .55);
+      c.closePath(); c.fill();
+    });
+  }
+  function glow(x, y, r, a) {
+    alpha(a, () => {
+      const g = c.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, 'rgba(255,205,80,.55)'); g.addColorStop(1, 'rgba(255,205,80,0)');
+      c.fillStyle = g; circ(x, y, r); c.fill();
+    });
+  }
+  function bigText(txt, x, y, size, col, a = 1, weight = 600) {
+    alpha(a, () => { c.fillStyle = col; c.font = `${weight} ${size}px ${FD}`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.fillText(txt, x, y); });
+  }
+
+  // ---------- schéma des échanges ----------
+  const ORDER = ['sacha', 'forgeronne', 'meunier', 'menuisier', 'bergere'];
+  const HAS = { sacha: 'panier', menuisier: 'planche', forgeronne: 'clous', bergere: 'laine', meunier: 'farine' };
+  const WANTS = [['sacha', 'menuisier', 'planche'], ['menuisier', 'forgeronne', 'clous'], ['forgeronne', 'bergere', 'laine'], ['bergere', 'meunier', 'farine'], ['meunier', 'sacha', 'pomme']];
+  function npos(who, cx, cy, R) {
+    const a = -Math.PI / 2 + ORDER.indexOf(who) * 2 * Math.PI / 5;
+    return [cx + R * Math.cos(a), cy + R * Math.sin(a)];
+  }
+  function node(who, x, y, r, o = {}) {
+    const P = CAST[who];
+    alpha(o.a ?? 1, () => {
+      if (o.hl) glow(x, y, r * 1.8, o.hl);
+      c.fillStyle = '#FFFFFF'; circ(x, y, r); c.fill();
+      c.save(); circ(x, y, r); c.clip();
+      c.fillStyle = P.shirt; ell(x, y + r * .95, r * .75, r * .55); c.fill();
+      if (P.apron) { c.fillStyle = P.apron; ell(x, y + r * 1.05, r * .45, r * .5); c.fill(); }
+      c.translate(x, y - r * .12); const hs = r * .5 / KIND[P.kind]; c.scale(hs, hs); head(P, talk(who));
+      c.restore();
+      c.strokeStyle = P.ring; c.lineWidth = r * .09; circ(x, y, r); c.stroke();
+      if (o.badge !== false) {
+        const bx = x + r * .74, by = y + r * .74;
+        c.fillStyle = '#FFFFFF'; circ(bx, by, r * .38); c.fill(); c.strokeStyle = '#CBD2C8'; c.lineWidth = r * .04; c.stroke();
+        item(HAS[who], bx, by, r * .24);
+      }
+      if (o.got) {
+        const gx = x - r * .74, gy = y - r * .74;
+        c.fillStyle = '#FFFFFF'; circ(gx, gy, r * .38); c.fill(); c.strokeStyle = GREEN; c.lineWidth = r * .07; c.stroke();
+        item(o.got, gx, gy, r * .24);
+      }
+    });
+  }
+  function net(cx, cy, R, nr, S) {
+    alpha(S.a ?? 1, () => {
+      if (S.spokes > 0) {
+        c.strokeStyle = GREEN; c.lineWidth = nr * .11; c.lineCap = 'round';
+        ORDER.forEach(w => {
+          const [x, y] = npos(w, cx, cy, R), L = Math.hypot(x - cx, y - cy), ux = (x - cx) / L, uy = (y - cy) / L;
+          const a0 = nr * .75, a1 = lerp(a0, L - nr * 1.02, S.spokes);
+          line(cx + ux * a0, cy + uy * a0, cx + ux * a1, cy + uy * a1);
+        });
+      }
+      WANTS.forEach(([a, b, it], i) => {
+        const p = S.arrows?.[i] || 0, aa = S.arrowAlpha ?? 1;
+        if (p <= 0 || aa <= 0) return;
+        const [x1, y1] = npos(a, cx, cy, R), [x2, y2] = npos(b, cx, cy, R);
+        const col = S.red ? mix('#2B2E33', RED, S.red) : INK;
+        arrow(x1, y1, x2, y2, { col, lw: nr * .08, p, a: aa, cut1: nr * 1.05, cut2: nr * 1.12, head: nr * .3 });
+        const lp = .3, lx = lerp(x1, x2, lp), ly = lerp(y1, y2, lp);
+        alpha(aa * clamp((p - .3) / .2), () => {
+          c.fillStyle = '#FFFFFF'; circ(lx, ly, nr * .32); c.fill(); c.strokeStyle = col; c.lineWidth = nr * .05; c.stroke();
+          item(it, lx, ly, nr * .2);
+        });
+      });
+      if (S.hub > 0) token(cx, cy, nr * .68 * S.hub, 1, 1);
+      ORDER.forEach(w => { const [x, y] = npos(w, cx, cy, R); node(w, x, y, nr, { a: S.nodes?.[w] ?? 1, got: S.got?.[w], hl: S.hl?.[w] || 0 }); });
+    });
+  }
+
+  // ---------- lignes de voix off et scènes ----------
+  const WPS = 2.3;
+  let CUR = null, TT = 0, CUR_T = 0;
+  function talk(who) {
+    if (!CUR || CUR.who !== who || CUR_T > CUR.d - .8) return 0;
+    return clamp((.55 + .45 * Math.sin(TT * 17)) * (.65 + .35 * Math.sin(TT * 5.3)));
+  }
+  const spk = who => (CUR && CUR.who === who && CUR_T < CUR.d - .5) ? 1 : 0;
+
+  const SCENES = [
+    {
+      id: 'titre', title: 'Titre', phase: 'Générique', lines: [], tail: 7,
+      draw(t) {
+        sky(.35 + t * .18);
+        person('sacha', 760, GROUND + 40, 270, {});
+        person('naya', 1160, GROUND + 40, 330, { face: -1 });
+        const a = prog(t, .3, 1);
+        bigText('Le Village des Trois Moulins', 960, 300, 104, INK, a);
+        bigText('Épisode 1', 960, 405, 50, CLAY, prog(t, .9, 1));
+        bigText("L'Énigme des Pommes et des Briques", 960, 480, 64, INK, prog(t, 1.2, 1), 500);
+      },
+    },
+    {
+      id: 'village', title: 'Le village', phase: 'Interrogation initiale', lead: .6, tail: 1.2,
+      lines: [
+        { id: 'N1', who: 'narr', text: "Voici le Village des Trois Moulins. Ici, chacun fabrique quelque chose d'utile." },
+        { id: 'N2', who: 'narr', text: 'Le menuisier scie des planches. La forgeronne forge des clous. La bergère file de la laine.', pad: .6 },
+        { id: 'N3', who: 'narr', text: 'Et Sacha, lui, vient de cueillir un grand panier de pommes.', pad: .6 },
+        { id: 'N4', who: 'narr', text: "Mais alors… comment obtient-on une chose que fabrique quelqu'un d'autre ?", pad: .8 },
+      ],
+      draw(t, L) {
+        sky();
+        const stalls = [['menuisier', 690, '#9B6A3E', 'bois'], ['forgeronne', 1150, '#4F5A66', 'forge'], ['bergere', 1610, '#5E9A5A', 'laine']];
+        const n2 = L.N2, third = (n2.e - n2.s - 1.2) / 3;
+        stalls.forEach(([who, x, awn, kind], i) => {
+          const on = win(t, n2.s + i * third, n2.s + (i + 1) * third + (i === 2 ? 1.2 : .2), .25);
+          glow(x, GROUND - 230, 330, on);
+          stall(x, .9, awn);
+          person(who, x + 10, GROUND - 8, 330, { face: -1 });
+          counter(x, .9);
+          goods(kind, x, .9);
+        });
+        const p = prog(t, L.N3.s, 2.6), x = lerp(-160, 290, p);
+        const h = person('sacha', x, GROUND + 40, 270, { walk: p > 0 && p < 1 ? t * 9 : 0 });
+        item('panier', h.hx + 12, h.hy - 4, 38);
+        bigText('?', x, h.top - 70, 130, CLAY, prog(t, L.N4.s + .4, .5), 700);
+      },
+    },
+    {
+      id: 'menuisier', title: 'Chez le menuisier', phase: 'Mise en situation', lead: .8, tail: 1.2,
+      lines: [
+        { id: 'S1', who: 'sacha', text: 'Bonjour ! Je voudrais cette belle planche pour fabriquer un plateau de jeu.' },
+        { id: 'S2', who: 'sacha', text: 'Je vous donne mes pommes en échange !', pad: .4 },
+        { id: 'M1', who: 'menuisier', text: "Des pommes ? C'est gentil, mais mon atelier en est déjà plein.", pad: .4 },
+        { id: 'M2', who: 'menuisier', text: "Moi, ce qu'il me faut, ce sont des clous.", pad: .6 },
+      ],
+      draw(t, L) {
+        sky();
+        const k = 1.25, sx = 1320;
+        stall(sx, k, '#9B6A3E');
+        person('menuisier', sx + 30, GROUND - 8, 470, { face: -1, open: talk('menuisier'), hl: 0 });
+        counter(sx, k); goods('bois', sx, k);
+        alpha(prog(t, L.M1.s + .6, .6), () => crate(1690));
+        const h = person('sacha', 640, GROUND + 40, 300, { open: talk('sacha'), hl: spk('sacha'), reach: t > L.S2.s && t < L.M1.s + 1 });
+        item('panier', h.hx + 14, h.hy + 6, 44);
+        const b1 = win(t, L.S1.s + .4, L.S2.e, .35);
+        bubble(640, h.top - 120, 250, 150, 640, h.top - 12, b1);
+        item('planche', 640, h.top - 120, 62, b1);
+        const fp = prog(t, L.S2.s + .5, 1.3);
+        const ax = lerp(h.hx + 14, sx - 200, fp), ay = lerp(h.hy - 40, GROUND - 330, fp) - Math.sin(fp * Math.PI) * 120;
+        item('pomme', ax, ay, 36, (t > L.S2.s + .5 ? 1 : 0) * (1 - prog(t, L.M1.s + .8, .5)));
+        const bx = 900, by = GROUND - 560;
+        const m1 = win(t, L.M1.s + .3, L.M1.e, .3), m2 = win(t, L.M2.s + .1, L.M2.e + 1.2, .3);
+        bubble(bx, by, 300, 170, sx - 60, GROUND - 430, Math.max(m1, m2));
+        item('pomme', bx - 45, by, 40, m1); item('pomme', bx + 45, by, 40, m1); cross(bx, by, 70, m1);
+        item('clous', bx, by, 56, m2);
+      },
+    },
+    {
+      id: 'forgeronne', title: 'Chez la forgeronne', phase: 'Mise en situation', lead: .5, tail: 1.2,
+      lines: [
+        { id: 'N5', who: 'narr', text: 'Des clous ? Sacha file aussitôt chez la forgeronne.', pad: .8 },
+        { id: 'S3', who: 'sacha', text: 'Bonjour ! Mes pommes contre quelques clous ?' },
+        { id: 'F1', who: 'forgeronne', text: "Je n'ai pas besoin de pommes, Sacha. Je cherche de la laine, pour me faire des gants bien chauds.", pad: .6 },
+      ],
+      draw(t, L) {
+        sky();
+        const k = 1.25, sx = 1320;
+        stall(sx, k, '#4F5A66');
+        person('forgeronne', sx + 30, GROUND - 8, 450, { face: -1, open: talk('forgeronne') });
+        counter(sx, k); goods('forge', sx, k);
+        const p = prog(t, L.N5.s + .3, 2.6), x = lerp(-150, 640, p);
+        const h = person('sacha', x, GROUND + 40, 300, { walk: p > 0 && p < 1 ? t * 9 : 0, open: talk('sacha'), hl: spk('sacha') });
+        item('panier', h.hx + 14, h.hy + 6, 44);
+        const b = win(t, L.S3.s + .2, L.S3.e + .3, .3);
+        bubble(640, h.top - 120, 360, 150, 640, h.top - 12, b);
+        item('pomme', 555, h.top - 120, 36, b);
+        arrow(600, h.top - 120, 680, h.top - 120, { lw: 7, head: 22, a: b });
+        item('clous', 730, h.top - 120, 42, b);
+        const f = L.F1, mid = f.s + (f.e - f.s) * .4;
+        const b1 = win(t, f.s + .2, mid, .3), b2 = win(t, mid, f.e + 1.2, .3);
+        const bx = 900, by = GROUND - 560;
+        bubble(bx, by, 280, 170, sx - 60, GROUND - 420, Math.max(b1, b2));
+        item('pomme', bx, by, 44, b1); cross(bx, by, 70, b1);
+        item('laine', bx, by, 58, b2);
+      },
+    },
+    {
+      id: 'blocage', title: 'La chaîne bloquée', phase: 'Mise en situation', lead: .8, tail: 1.8,
+      lines: [
+        { id: 'N6', who: 'narr', text: "De la laine ? C'est la bergère qui en a. Mais la bergère, elle, voudrait de la farine.", pad: .6 },
+        { id: 'N7', who: 'narr', text: 'La farine, c\'est le meunier. Et le meunier… voudrait justement des pommes !', pad: .8 },
+        { id: 'N8', who: 'narr', text: 'Pour que tout le monde soit content, il faudrait réunir les cinq au même endroit, au même moment, et que tous échangent en même temps.', pad: .6 },
+        { id: 'N9', who: 'narr', text: 'Autant dire que c\'est presque impossible. Les échanges sont bloqués.', pad: .6 },
+      ],
+      draw(t, L) {
+        paper();
+        const squeeze = win(t, L.N8.s + .8, L.N8.e - .2, 1.2);
+        const R = 330 * (1 - .3 * squeeze);
+        const red = t > L.N9.s ? (.55 + .45 * Math.sin((t - L.N9.s) * 7)) * prog(t, L.N9.s, .5) : 0;
+        net(960, 500, R, 86, {
+          nodes: { sacha: prog(t, 0, .5), menuisier: prog(t, .2, .5), forgeronne: prog(t, .4, .5), bergere: prog(t, L.N6.s + 1.2, .5), meunier: prog(t, L.N7.s, .5) },
+          arrows: [prog(t, .4, 1), prog(t, 1.1, 1), prog(t, L.N6.s + 1.5, 1), prog(t, L.N6.e - 1.8, 1), prog(t, L.N7.s + 2, 1)],
+          red,
+        });
+      },
+    },
+    {
+      id: 'naya', title: 'Naya et le troc', phase: 'Formalisation', lead: 1.6, tail: 1.2,
+      lines: [
+        { id: 'NY1', who: 'naya', text: "Sacha, tu viens de découvrir un très vieux problème. Échanger une chose directement contre une autre, ça s'appelle le troc." },
+        { id: 'NY2', who: 'naya', text: "Le troc ne marche que si chacun veut exactement ce que l'autre possède.", pad: 2 },
+        { id: 'NY3', who: 'naya', text: "Alors, réfléchis : et si tout le monde acceptait une même petite chose, qu'on pourrait ensuite redonner à n'importe qui ?", pad: .6 },
+        { id: 'S4', who: 'sacha', text: 'Une chose que tout le monde accepte… Mais laquelle ?', pad: .6 },
+      ],
+      draw(t, L) {
+        sky();
+        const p = prog(t, .1, 2.2), nx = lerp(2100, 1180, p);
+        person('naya', nx, GROUND + 40, 340, { face: -1, walk: p > 0 && p < 1 ? t * 8 : 0, open: talk('naya'), hl: spk('naya') });
+        const h = person('sacha', 720, GROUND + 40, 300, { open: talk('sacha'), hl: spk('sacha') });
+        item('panier', h.hx + 14, h.hy + 6, 44);
+        const pa = win(t, L.NY2.s + .2, L.NY3.s + .5, .4);
+        alpha(pa, () => {
+          c.fillStyle = '#FFFFFF'; rr(460, 60, 1000, 420, 30); c.fill(); c.strokeStyle = '#D7DDD3'; c.lineWidth = 3; c.stroke();
+          const r1 = 170, r2 = 370, xa = 620, xb = 1140;
+          node('menuisier', xa, r1, 62, {}); node('forgeronne', xb, r1, 62, {});
+          arrow(xa, r1 - 26, xb, r1 - 26, { col: GREEN, lw: 7, head: 24, cut1: 72, cut2: 72 });
+          arrow(xb, r1 + 26, xa, r1 + 26, { col: GREEN, lw: 7, head: 24, cut1: 72, cut2: 72 });
+          c.fillStyle = '#FFFFFF'; circ(880, r1 - 30, 24); c.fill(); item('clous', 880, r1 - 30, 17);
+          circ(880, r1 + 30, 24); c.fill(); item('planche', 880, r1 + 30, 17);
+          check(1340, r1, 42, prog(t, L.NY2.s + 1.4, .4));
+          const q = prog(t, L.NY2.s + 2.6, .5);
+          alpha(q, () => {
+            node('menuisier', xa, r2, 62, {}); node('forgeronne', xb, r2, 62, {});
+            arrow(xa, r2, xb, r2, { col: '#8A9290', lw: 7, head: 24, cut1: 72, cut2: 72 });
+            c.fillStyle = '#FFFFFF'; circ(880, r2, 24); c.fill(); item('clous', 880, r2, 17);
+            cross(1340, r2, 42, prog(t, L.NY2.s + 3.4, .4));
+          });
+        });
+        const g = win(t, L.NY3.s + 2, L.S4.e + 1.2, .6);
+        alpha(g, () => {
+          glow(950, GROUND - 330, 170, 1);
+          c.setLineDash([14, 12]); c.strokeStyle = CLAY; c.lineWidth = 7; circ(950, GROUND - 330, 72); c.stroke(); c.setLineDash([]);
+          bigText('?', 950, GROUND - 326, 96, CLAY, 1, 700);
+        });
+      },
+    },
+    {
+      id: 'jetons', title: "Les jetons d'argile", phase: 'Formalisation', lead: .4, tail: 1.2,
+      lines: [
+        { id: 'N10', who: 'narr', text: "Naya propose aux artisans des jetons en argile cuite.", pad: 1.6 },
+        { id: 'N11', who: 'narr', text: 'Ils ont tous la même taille, et la même marque : celle du village.', pad: 2 },
+        { id: 'N12', who: 'narr', text: "Tous les habitants se mettent d'accord : ces jetons, chacun les accepte.", pad: 2.4 },
+      ],
+      draw(t, L) {
+        paper();
+        const a = L.N10.s, b = L.N11.s, d = L.N12.s;
+        const sc = prog(t, a - .2, .8), bake = prog(t, a + 1.4, 2.2);
+        const sp = prog(t, b + 2.4, 1.2), up = prog(t, d, .8);
+        const y = lerp(450, 330, up);
+        const markOn = clamp((t - (b + .75)) / .1);
+        for (let i = 0; i < 5; i++) {
+          if (i === 2) continue;
+          alpha(sp, () => token(lerp(960, 960 + (i - 2) * 210, sp), y, 88, 1, 1));
+        }
+        token(960, y, lerp(150, 88, sp) * sc, bake, markOn);
+        const s1 = prog(t, b + .2, .55), s2 = prog(t, b + 1.0, .6);
+        const sy = lerp(-260, 260, s1) - s2 * 560;
+        if (t > b && s2 < 1) {
+          c.fillStyle = '#8A5A2E'; rr(925, sy - 170, 70, 180, 16); c.fill();
+          c.fillStyle = '#6B4423'; rr(850, sy, 220, 40, 10); c.fill();
+        }
+        const order = ['sacha', 'menuisier', 'forgeronne', 'bergere', 'meunier'];
+        order.forEach((w, i) => {
+          const x = 960 + (i - 2) * 230, ok = prog(t, d + 1 + i * .6, .4);
+          node(w, x, 740, 72, { a: prog(t, d + .3, .6), badge: false, hl: ok * .6 });
+          check(x + 52, 740 - 52, 26, ok);
+        });
+      },
+    },
+    {
+      id: 'echange', title: 'Tout circule', phase: 'Formalisation', lead: 2.2, tail: 1.6,
+      lines: [
+        { id: 'N13', who: 'narr', text: 'Le meunier, qui voulait des pommes, achète le panier de Sacha pour trois jetons.', pad: 1.6 },
+        { id: 'M3', who: 'menuisier', text: 'Ma planche contre trois jetons ? Marché conclu !', pad: 1.2 },
+        { id: 'M4', who: 'menuisier', text: "Et avec ces jetons, j'irai acheter mes clous quand j'en aurai besoin.", pad: 1.4 },
+        { id: 'N14', who: 'narr', text: 'La forgeronne pourra payer la bergère, la bergère pourra payer le meunier… Plus besoin d\'être tous là au même moment.', pad: 1.6 },
+      ],
+      draw(t, L) {
+        paper();
+        const cx = 960, cy = 500, R = 330, nr = 80;
+        const T = [
+          ['meunier', 'sacha', 'panier', L.N13.s + 1.4, 3],
+          ['sacha', 'menuisier', 'planche', L.M3.s + .4, 2.6],
+          ['menuisier', 'forgeronne', 'clous', L.M4.s + 1.6, 2.4],
+          ['forgeronne', 'bergere', 'laine', L.N14.s + .3, 2.2],
+          ['bergere', 'meunier', 'farine', L.N14.s + 2.8, 2.2],
+        ];
+        const got = {};
+        T.forEach(([buyer, , it, s, d]) => { if (t >= s + d) got[buyer] = it; });
+        net(cx, cy, R, nr, {
+          arrows: [1, 1, 1, 1, 1], arrowAlpha: 1 - prog(t, .2, 1), red: 1,
+          spokes: prog(t, .9, 1.2), hub: prog(t, .9, .8), got,
+        });
+        const via = (from, to, p) => {
+          const [x1, y1] = npos(from, cx, cy, R), [x2, y2] = npos(to, cx, cy, R);
+          return p < .5 ? [lerp(x1, cx, p * 2), lerp(y1, cy, p * 2)] : [lerp(cx, x2, p * 2 - 1), lerp(cy, y2, p * 2 - 1)];
+        };
+        T.forEach(([buyer, seller, it, s, d]) => {
+          const p = lin(t, s, d);
+          if (p <= 0 || p >= 1) return;
+          for (let k = 0; k < 3; k++) {
+            const q = clamp(p * 1.25 - k * .12);
+            if (q > 0 && q < 1) { const [x, y] = via(buyer, seller, q); token(x, y, 26, 1, 1); }
+          }
+          const [ix, iy] = via(seller, buyer, ease(p));
+          c.fillStyle = '#FFFFFF'; circ(ix, iy, 40); c.fill(); c.strokeStyle = GREEN; c.lineWidth = 4; c.stroke();
+          item(it, ix, iy, 26);
+        });
+      },
+    },
+    {
+      id: 'recap', title: "Ce qu'est la monnaie", phase: 'Formalisation', lead: .6, tail: 1.6,
+      lines: [
+        { id: 'N15', who: 'narr', text: "Voilà ce qu'est la monnaie : une chose que tout le monde accepte en échange.", pad: .6 },
+        { id: 'N16', who: 'narr', text: "Elle évite d'avoir à trouver quelqu'un qui veut exactement ce qu'on a.", pad: .6 },
+        { id: 'N17', who: 'narr', text: 'Et elle permet de comparer : une planche vaut trois jetons, un panier de pommes aussi.', pad: 1.4 },
+      ],
+      draw(t, L) {
+        paper();
+        const a = prog(t, 0, .6), dim = prog(t, L.N16.s + .3, .6);
+        net(500, 360, 200, 50, { a: a * (1 - .55 * dim), arrows: [1, 1, 1, 1, 1], red: 1 });
+        arrow(790, 360, 1130, 360, { lw: 14, head: 42, p: prog(t, .8, .8) });
+        glow(1420, 360, 330, dim);
+        net(1420, 360, 200, 50, { a: prog(t, 1.2, .6), spokes: 1, hub: 1 });
+        const r1 = prog(t, L.N17.s + 1.8, .6), r2 = prog(t, L.N17.s + 3.4, .6);
+        item('planche', 420, 800, 72, r1); bigText('=', 580, 800, 96, INK, r1);
+        [680, 770, 860].forEach(x => alpha(r1, () => token(x, 800, 36)));
+        item('panier', 1110, 790, 66, r2); bigText('=', 1260, 800, 96, INK, r2);
+        [1360, 1450, 1540].forEach(x => alpha(r2, () => token(x, 800, 36)));
+      },
+    },
+    {
+      id: 'question', title: 'À toi de chercher', phase: 'Question ouverte', lead: .5, tail: 6,
+      lines: [
+        { id: 'NY4', who: 'naya', text: 'À toi, maintenant ! Chez toi, cherche un objet que ta famille a acheté.', pad: 1.2 },
+        { id: 'NY5', who: 'naya', text: "S'il n'y avait pas de monnaie, qu'aurait-il fallu donner en échange ? Et à qui ?", pad: 1 },
+      ],
+      draw(t, L) {
+        sky();
+        person('naya', 960, GROUND + 40, 360, { open: talk('naya'), hl: spk('naya') });
+        const hA = prog(t, L.NY4.s + 1.4, .6);
+        glow(500, GROUND - 150, 260, hA * .8);
+        alpha(hA, () => house(500, GROUND - 10, 1.1));
+        alpha(prog(t, L.NY4.s + 3, .5), () => item('paquet', 500, GROUND - 330, 46));
+        const q = prog(t, L.NY5.s + .6, .6);
+        alpha(q, () => {
+          item('paquet', 1300, GROUND - 300, 52);
+          arrow(1370, GROUND - 318, 1520, GROUND - 318, { lw: 8, head: 26 });
+          arrow(1520, GROUND - 282, 1370, GROUND - 282, { lw: 8, head: 26 });
+          c.fillStyle = '#FFFFFF'; circ(1600, GROUND - 300, 58); c.fill(); c.strokeStyle = CLAY; c.lineWidth = 6; c.stroke();
+          bigText('?', 1600, GROUND - 296, 80, CLAY, 1, 700);
+        });
+        const e = prog(t, L.NY5.e + .6, .9);
+        alpha(e, () => {
+          c.fillStyle = PAPER; c.globalAlpha *= .94; c.fillRect(0, 0, W, H); c.globalAlpha /= .94;
+          bigText('À suivre', 960, 420, 52, CLAY);
+          bigText('Épisode 2 · D\'où viennent les pièces ?', 960, 510, 72, INK);
+          token(960, 650, 50);
+        });
+      },
+    },
+  ];
+
+  // ---------- chronologie ----------
+  let TOTAL = 0;
+  const LINES = [];
+  for (const S of SCENES) {
+    S.start = TOTAL; S.L = {};
+    let t = S.lead || 0;
+    for (const l of S.lines) {
+      l.d = l.text.split(/\s+/).length / WPS + .9 + (l.pad || 0);
+      S.L[l.id] = { s: t, e: t + l.d };
+      l.gs = S.start + t;
+      LINES.push(l);
+      t += l.d;
+    }
+    S.dur = t + (S.tail || 0);
+    TOTAL += S.dur;
+  }
+
+  function wrap(text, max) {
+    const words = text.split(' '), out = [];
+    let cur = '';
+    for (const w of words) {
+      const test = cur ? cur + ' ' + w : w;
+      if (c.measureText(test).width > max && cur) { out.push(cur); cur = w; } else cur = test;
+    }
+    if (cur) out.push(cur);
+    return out;
+  }
+  function captions() {
+    if (!CUR) return;
+    const P = CAST[CUR.who];
+    const a = clamp(CUR_T / .25) * clamp((CUR.d - CUR_T) / .25);
+    alpha(a, () => {
+      c.font = `400 42px ${FB}`;
+      const lines = wrap(CUR.text, 1480);
+      const lw = Math.max(...lines.map(s => c.measureText(s).width), 360);
+      const pad = 28, lh = 56, bh = pad * 2 + 40 + lines.length * lh, bw = lw + pad * 2;
+      const x0 = (W - bw) / 2, y0 = H - 36 - bh;
+      c.fillStyle = 'rgba(22,24,28,.8)'; rr(x0, y0, bw, bh, 24); c.fill();
+      c.textAlign = 'left'; c.textBaseline = 'top';
+      c.fillStyle = P.cap; c.font = `600 30px ${FD}`; c.fillText(P.name, x0 + pad, y0 + pad - 2);
+      c.fillStyle = '#FFFFFF'; c.font = `400 42px ${FB}`;
+      lines.forEach((s, i) => c.fillText(s, x0 + pad, y0 + pad + 42 + i * lh));
+    });
+  }
+
+  function renderAt(t, subs = true) {
+    t = clamp(t, 0, TOTAL - 1e-3);
+    TT = t;
+    let si = SCENES.findIndex(S => t < S.start + S.dur);
+    if (si < 0) si = SCENES.length - 1;
+    const S = SCENES[si], lt = t - S.start;
+    CUR = LINES.find(l => t >= l.gs && t < l.gs + l.d) || null;
+    CUR_T = CUR ? t - CUR.gs : 0;
+    c.save(); c.textAlign = 'center'; c.textBaseline = 'middle';
+    S.draw(lt, S.L, S);
+    c.restore();
+    if (si > 0 && lt < .4) { c.fillStyle = PAPER; c.globalAlpha = 1 - lt / .4; c.fillRect(0, 0, W, H); c.globalAlpha = 1; }
+    if (subs) captions();
+    return si;
+  }
+
+  const fmt = s => Math.floor(s / 60) + ':' + String(Math.floor(s % 60)).padStart(2, '0');
+  function script() {
+    const out = ['# Épisode 1 · L\'Énigme des Pommes et des Briques — voix off', '', `Durée totale : ${fmt(TOTAL)} (${TOTAL.toFixed(1)} s). Timecodes générés depuis l'animation.`, ''];
+    for (const S of SCENES) {
+      out.push(`## ${fmt(S.start)} · ${S.title} (${S.phase})`, '');
+      for (const l of S.lines) out.push(`- \`${fmt(l.gs)}\` **${CAST[l.who].name}** : ${l.text}`);
+      if (!S.lines.length) out.push('- *(sans voix)*');
+      out.push('');
+    }
+    return out.join('\n');
+  }
+
+  // ---------- lecteur ----------
+  const $ = id => document.getElementById(id);
+  const btn = $('play'), seek = $('seek'), time = $('time'), subs = $('subs'), voice = $('voice'), list = $('chapters');
+  let playing = false, cur = 0, t0 = 0, tStart = 0, lastLine = null, lastScene = -1;
+  $('dur').textContent = fmt(TOTAL);
+
+  SCENES.forEach((S, i) => {
+    const li = document.createElement('li'); li.className = 'chap';
+    const b = document.createElement('button'); b.type = 'button';
+    b.innerHTML = `<span class="tc">${fmt(S.start)}</span><span>${S.title}<span class="phase">${S.phase}</span></span>`;
+    b.addEventListener('click', () => { cur = S.start + .01; if (playing) { tStart = cur; t0 = performance.now(); stopVoice(); } draw(); });
+    li.appendChild(b); list.appendChild(li);
+  });
+
+  function stopVoice() { try { speechSynthesis.cancel(); } catch (e) {} lastLine = null; }
+  function speak() {
+    if (!voice.checked || !playing || CUR === lastLine) return;
+    lastLine = CUR;
+    try {
+      speechSynthesis.cancel();
+      if (CUR) {
+        const u = new SpeechSynthesisUtterance(CUR.text);
+        u.lang = 'fr-FR'; u.rate = 1;
+        const fr = speechSynthesis.getVoices().find(v => v.lang && v.lang.startsWith('fr'));
+        if (fr) u.voice = fr;
+        speechSynthesis.speak(u);
+      }
+    } catch (e) {}
+  }
+  function draw() {
+    const si = renderAt(cur, subs.checked);
+    seek.value = Math.round(cur / TOTAL * 1000);
+    time.textContent = `${fmt(cur)} / ${fmt(TOTAL)}`;
+    if (si !== lastScene) { [...list.children].forEach((li, i) => li.classList.toggle('on', i === si)); lastScene = si; }
+  }
+  function tick(now) {
+    if (!playing) return;
+    cur = tStart + (now - t0) / 1000;
+    if (cur >= TOTAL) { cur = TOTAL; pause(); }
+    draw(); speak();
+    if (playing) requestAnimationFrame(tick);
+  }
+  function play() { if (cur >= TOTAL - .05) cur = 0; playing = true; tStart = cur; t0 = performance.now(); btn.textContent = 'Pause'; requestAnimationFrame(tick); }
+  function pause() { playing = false; btn.textContent = 'Lire'; stopVoice(); }
+  btn.addEventListener('click', () => playing ? pause() : play());
+  seek.addEventListener('input', () => { cur = seek.value / 1000 * TOTAL; if (playing) { tStart = cur; t0 = performance.now(); stopVoice(); } draw(); });
+  subs.addEventListener('change', draw);
+  voice.addEventListener('change', () => { if (!voice.checked) stopVoice(); });
+  document.addEventListener('keydown', e => {
+    if (e.code === 'Space' && !/INPUT|BUTTON/.test(document.activeElement.tagName)) { e.preventDefault(); playing ? pause() : play(); }
+  });
+
+  draw();
+  const ready = Promise.race([
+    Promise.all([document.fonts.load(`600 60px ${FD}`), document.fonts.load(`500 60px ${FD}`), document.fonts.load(`700 60px ${FD}`), document.fonts.load(`400 42px ${FB}`)]),
+    new Promise(r => setTimeout(r, 4000)),
+  ]);
+  window.EP = {
+    T: TOTAL, ready: false, script,
+    frame(t, withSubs) { renderAt(t, withSubs); return cv.toDataURL('image/jpeg', .92).split(',')[1]; },
+  };
+  ready.then(() => { draw(); window.EP.ready = true; });
+})();
+</script>

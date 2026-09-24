@@ -1,5 +1,9 @@
-<meta charset="utf-8">
-<title>L'Énigme des Pommes et des Briques</title>
+"""Écrit la page HTML d'un épisode (moteur commun + scènes de l'épisode + durées de voix éventuelles)."""
+import sys
+from pathlib import Path
+
+TPL = """<meta charset="utf-8">
+<title>{titre}</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&display=swap">
@@ -7,3 +11,6 @@
 <script src="episode.js"></script>
 <script src="audio/durees.js" onerror="void 0"></script>
 <script>Moteur.demarrer();</script>
+"""
+for d, titre in (a.split("=", 1) for a in sys.argv[1:]):
+    Path(d, "index.html").write_text(TPL.format(titre=titre), encoding="utf-8")

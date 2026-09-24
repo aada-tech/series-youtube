@@ -1,8 +1,11 @@
 // Exporte un épisode animé en MP4 (image par image) et génère son script de voix off.
 //
-//   NODE_PATH=$(npm root -g) NODE_USE_ENV_PROXY=1 node tools/render.cjs episodes/ep01 [--fps 25] [--no-subs] [--script-only]
+//   node tools/render.cjs episodes/ep01 [--fps 25] [--no-subs] [--script-only] [--muet]
 //
+// Si l'épisode a une voix (episodes/epNN/audio/ : un fichier NN-personnage.wav par réplique et durees.js),
+// l'animation suit la durée réelle de chaque réplique et l'audio est mixé dans la vidéo (sauf avec --muet).
 // Nécessite Playwright (Chromium) et ffmpeg. Le chemin de ffmpeg peut être fourni via FFMPEG.
+// Dans un conteneur cloud : NODE_PATH=$(npm root -g) NODE_USE_ENV_PROXY=1 node tools/render.cjs ...
 // Les polices Google sont téléchargées par Node (qui suit HTTPS_PROXY avec NODE_USE_ENV_PROXY=1
 // et NODE_EXTRA_CA_CERTS) puis servies à Chromium.
 const path = require('path');
@@ -54,6 +57,28 @@ const out = opt('--out', path.join('out', `${name}${subs ? '-sous-titres' : ''}.
   }
   ff.stdin.end();
   await done;
+
+  const audioDir = path.join(dir, 'audio');
+  const wavs = fs.existsSync(audioDir) ? fs.readdirSync(audioDir).filter(f => /^\d+-.+\.wav$/.test(f)) : [];
+  if (wavs.length && !flag('--muet')) {
+    const lignes = await page.evaluate(() => window.EP.lignes());
+    const inputs = [], filters = [];
+    for (const l of lignes) {
+      const f = wavs.find(w => Number(w.split('-')[0]) === l.n);
+      if (!f) { console.warn(`Pas d'audio pour la réplique ${l.n}`); continue; }
+      inputs.push('-i', path.join(audioDir, f));
+      const ms = Math.round(l.gs * 1000);
+      filters.push(`[${inputs.length / 2}:a]adelay=${ms}:all=1[a${inputs.length / 2}]`);
+    }
+    const n = inputs.length / 2;
+    const graph = filters.join(';') + ';' + Array.from({ length: n }, (_, i) => `[a${i + 1}]`).join('') + `amix=inputs=${n}:normalize=0[voix]`;
+    const muxed = out.replace(/\.mp4$/, '.voix.mp4');
+    await new Promise((res, rej) => spawn(ffmpeg, ['-y', '-loglevel', 'error', '-i', out, ...inputs, '-filter_complex', graph,
+      '-map', '0:v', '-map', '[voix]', '-c:v', 'copy', '-c:a', 'aac', '-b:a', '192k', '-t', String(T), muxed], { stdio: 'inherit' })
+      .on('close', code => code === 0 ? res() : rej(new Error('mixage audio échoué (' + code + ')'))));
+    fs.renameSync(muxed, out);
+    console.log(`Voix mixée : ${n} répliques`);
+  }
   await browser.close();
   console.log(`Vidéo écrite dans ${out} (${T.toFixed(1)} s, ${fps} i/s)`);
 })().catch(e => { console.error(e); process.exit(1); });

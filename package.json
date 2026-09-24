@@ -1,0 +1,11 @@
+{
+  "name": "series-youtube",
+  "private": true,
+  "description": "Le Village des Trois Moulins : animations et export vidéo",
+  "scripts": {
+    "rendu": "node tools/render.cjs"
+  },
+  "devDependencies": {
+    "playwright": "1.56.1"
+  }
+}

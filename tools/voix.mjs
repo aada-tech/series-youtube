@@ -29,6 +29,11 @@ const ROLES = {
   forgeronne: { name: 'La forgeronne', gender: 'female', age: 'middle_aged', hint: 'femme franche et énergique' },
   bergere:    { name: 'La bergère',    gender: 'female', age: 'middle_aged', hint: 'femme douce' },
   meunier:    { name: 'Le meunier',    gender: 'male',   age: 'old',         hint: 'homme âgé, jovial' },
+  milo:       { name: 'Milo',          gender: 'male',   age: 'young',       hint: 'enfant posé et précis (8 ans)' },
+  maraichere: { name: 'La maraîchère', gender: 'female', age: 'middle_aged', hint: 'femme chaleureuse et joyeuse' },
+  marchand:   { name: "L'artisan nomade", gender: 'male', age: 'middle_aged', hint: 'conteur vif, un peu théâtral' },
+  mecanicienne: { name: 'La mécanicienne', gender: 'female', age: 'middle_aged', hint: 'femme claire et précise' },
+  epiciere:   { name: "L'épicière",    gender: 'female', age: 'middle_aged', hint: 'commerçante accueillante' },
 };
 const byName = Object.fromEntries(Object.entries(ROLES).map(([k, r]) => [r.name, k]));
 

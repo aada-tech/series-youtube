@@ -11,7 +11,8 @@ L'acquisition d'une culture économique et financière dès l'enfance constitue 
 5. [Progression pédagogique détaillée des 7 épisodes](#5-progression-pédagogique-détaillée-des-7-épisodes)
 6. [Scénarisation et fiches techniques des épisodes](#6-scénarisation-et-fiches-techniques-des-épisodes)
 7. [Recommandations de production et continuité pédagogique](#7-recommandations-de-production-et-continuité-pédagogique)
-8. [Sources](#sources)
+8. [Notes de production](#8-notes-de-production-écarts-entre-lanimation-et-la-bible)
+9. [Sources](#sources)
 
 ---
 
@@ -178,6 +179,21 @@ La pertinence d'une telle production audiovisuelle jeunesse réside dans sa capa
 Sur le plan technique et stylistique, la réalisation graphique gagnera à privilégier une animation épurée et géométrique en deux dimensions, reposant sur des contrastes chromatiques identifiables qui allègent la tâche de discrimination perceptive chez l'élève de cycle 2[^5]. L'indépendance éditoriale du projet commande d'exclure formellement toute référence à des établissements bancaires privés, des marques commerciales ou des produits de grande consommation, garantissant ainsi une neutralité institutionnelle conforme aux exigences pédagogiques des programmes publics d'éducation financière[^2].
 
 En inscrivant la monnaie dans sa stricte dimension d'instrument de coopération et de projet, la série pose les fondations cognitives nécessaires à une citoyenneté économique lucide, équilibrée et durable[^1].
+
+
+---
+
+## 8. Notes de production (écarts entre l'animation et la bible)
+
+Les animations suivent les fiches ci-dessus. Quelques ajustements ont été faits au moment de l'écriture des scripts, à valider :
+
+- **Épisode 1** : ajout de la bergère (qui a la laine) et du meunier, pour que la chaîne des envies fasse le tour du groupe. Sacha obtient ses trois jetons en vendant ses pommes au meunier. Le titre mentionne des briques, absentes du récit.
+- **Épisode 2** : l'armoire contient un casier par habitant ; Sacha tire le levier sur son casier vide.
+- **Épisode 3** : le ravitaillement coûte dix jetons ; la boîte verte en coûte huit, et les deux jetons restants paient les bonbons, pour montrer que le plaisir a sa place une fois le vital assuré.
+- **Épisode 5** : la fiche prévoyait 1,5 jeton par semaine pendant six semaines, soit 9 jetons pour un kit à 12. L'animation retient 4 jetons gagnés par semaine : 2 pour le projet, 1 pour les petites envies, 1 pour l'entraide, soit 12 jetons en six semaines. Le bocal d'entraide sert pendant un imprévu (la clôture de la bergère).
+- **Épisode 6** : ajout d'une scène expliquant comment le compte du meunier se remplit (paiements reçus pour son travail), en écho à l'épisode 2.
+- **Épisode 7** : la réserve de secours (5 jetons) est prévue dès le budget initial et paie la poutre brisée ; la lanterne, qui dépasserait les ressources, devient le prochain projet.
+- **Chaque épisode** se termine par une question ouverte de Naya, comme le recommande la section 7.
 
 ---
 

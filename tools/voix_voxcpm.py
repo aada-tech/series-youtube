@@ -15,6 +15,10 @@ Installation (Mac Apple Silicon ou PC avec GPU NVIDIA) :
 3. Génération : chaque réplique de voix-off.md, dite avec la voix de référence.
        python tools/voix_voxcpm.py generer episodes/ep01
    → episodes/ep01/audio/NN-<personnage>.wav (une réplique déjà générée avec le même texte est sautée)
+   → episodes/ep01/audio/durees.js : l'animation se cale sur la durée réelle de chaque réplique.
+
+4. Vidéo finale avec la voix (Playwright et ffmpeg installés) :
+       node tools/render.cjs episodes/ep01 --no-subs
 
 Les voix sont créées à partir d'une description écrite (« voice design ») : aucune voix réelle,
 et en particulier aucune voix d'enfant réelle, n'est clonée.
@@ -40,6 +44,10 @@ ROLES = {
     "La forgeronne": ("forgeronne", "A strong adult woman speaking French, frank, energetic and cheerful"),
     "La bergère": ("bergere", "An adult woman speaking French, soft and gentle voice"),
     "Le meunier": ("meunier", "An older man speaking French, jovial and slightly husky voice"),
+    "La maraîchère": ("maraichere", "An adult woman gardener speaking French, warm, grounded and cheerful"),
+    "L'artisan nomade": ("marchand", "A traveling craftsman speaking French, lively storyteller voice, slightly theatrical"),
+    "La mécanicienne": ("mecanicienne", "An adult woman mechanic speaking French, clear, confident and precise"),
+    "L'épicière": ("epiciere", "A friendly adult woman shopkeeper speaking French, bright and welcoming"),
 }
 SEEDS = [1, 2, 3, 4]
 GEN = dict(cfg_value=2.0, inference_timesteps=10)
@@ -130,6 +138,19 @@ def generer(ep_dir):
         manifest[name] = {"hash": key, "role": l["role"], "text": l["text"], "seconds": round(len(wav) / m.tts_model.sample_rate, 3)}
         manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{l['tc']} {name} ({manifest[name]['seconds']} s)")
+    write_durees(ep_dir, todo, manifest)
+
+
+def write_durees(ep_dir, todo, manifest):
+    numero = int(re.sub(r"\D", "", ep_dir.name) or 0)
+    d = {}
+    for l in todo:
+        entry = manifest.get(f"{l['n']:02d}-{l['role']}.wav")
+        if entry:
+            d[str(l["n"])] = entry["seconds"]
+    js = f"Moteur.durees({numero}, {json.dumps(d)});\n"
+    (ep_dir / "audio" / "durees.js").write_text(js, encoding="utf-8")
+    print(f"Durées écrites dans {ep_dir.name}/audio/durees.js ({len(d)} répliques)")
 
 
 if __name__ == "__main__":

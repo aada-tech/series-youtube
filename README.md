@@ -21,4 +21,4 @@ Chaque épisode est une page HTML autonome : les répliques, leur durée et les 
    ```
 
    `FFMPEG=/chemin/vers/ffmpeg` permet de choisir le binaire ffmpeg. Les vidéos sont écrites dans `out/` (non versionné).
-3. **Voix off** : enregistrer ou synthétiser chaque réplique de `voix-off.md`, puis caler les durées de la page sur les fichiers audio avant l'export final sans sous-titres.
+3. **Voix off** (en local, pas dans le cloud) avec VoxCPM2, modèle open source sous licence Apache-2.0 qui crée les voix à partir d'une description écrite : `python tools/voix_voxcpm.py essais episodes/ep01`, puis `choisir <épisode> <personnage> <seed>` pour fixer la voix de chaque personnage dans `voix/`, puis `generer`. Pousser ensuite `voix/` et `episodes/ep01/audio/` : les durées de l'animation seront calées sur l'audio avant l'export final sans sous-titres. (Alternative payante : `tools/voix.mjs` avec ElevenLabs.)

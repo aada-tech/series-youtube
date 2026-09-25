@@ -1,0 +1,219 @@
+{
+  "01-narr.wav": {
+    "hash": "11b359fc55df79daadb7e34a7a4c7c21",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Voici le Village des Trois Moulins. Ici, chacun fabrique quelque chose d'utile.",
+    "seconds": 6.216
+  },
+  "02-narr.wav": {
+    "hash": "c220fac13ab8c4162ccdd44f4dcc97ad",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le menuisier scie des planches. La forgeronne forge des clous. La bergère file de la laine.",
+    "seconds": 7.344
+  },
+  "03-narr.wav": {
+    "hash": "fec9fc1f3935fe20609fc303fd5555be",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Et Sacha, lui, vient de cueillir un grand panier de pommes.",
+    "seconds": 4.368
+  },
+  "04-narr.wav": {
+    "hash": "d3515e5cf849914e5cdf66a3954ed6b4",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Mais alors… comment obtient-on une chose que fabrique quelqu'un d'autre ?",
+    "seconds": 4.416
+  },
+  "05-sacha.wav": {
+    "hash": "8c7565be4efc65c83565fb7f111dea96",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Bonjour ! Je voudrais cette belle planche pour fabriquer un plateau de jeu.",
+    "seconds": 5.208
+  },
+  "06-sacha.wav": {
+    "hash": "e6a09cd968d11a8d5442f516a61cfefc",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Je vous donne mes pommes en échange !",
+    "seconds": 2.496
+  },
+  "07-menuisier.wav": {
+    "hash": "9bc1c3c43445fc9dbcfe8893f11fb86b",
+    "role": "menuisier",
+    "voice": "fr-FR-HenriNeural",
+    "text": "Des pommes ? C'est gentil, mais mon atelier en est déjà plein.",
+    "seconds": 5.28
+  },
+  "08-menuisier.wav": {
+    "hash": "8a77a7c802457dacaceb3c437662a857",
+    "role": "menuisier",
+    "voice": "fr-FR-HenriNeural",
+    "text": "Moi, ce qu'il me faut, ce sont des clous.",
+    "seconds": 3.552
+  },
+  "09-narr.wav": {
+    "hash": "319913257575079b87d921f64b54cd8d",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Des clous ? Sacha file aussitôt chez la forgeronne.",
+    "seconds": 4.56
+  },
+  "10-sacha.wav": {
+    "hash": "355a13f3b7d228ae8b44d17f416abed3",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Bonjour ! Mes pommes contre quelques clous ?",
+    "seconds": 3.768
+  },
+  "11-forgeronne.wav": {
+    "hash": "8447a55e243d7f66f6e4c6d2e44674ab",
+    "role": "forgeronne",
+    "voice": "fr-BE-CharlineNeural",
+    "text": "Je n'ai pas besoin de pommes, Sacha. Je cherche de la laine, pour me faire des gants bien chauds.",
+    "seconds": 6.096
+  },
+  "12-narr.wav": {
+    "hash": "931f0f7791866e57e693f5322123f7c7",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "De la laine ? C'est la bergère qui en a. Mais la bergère, elle, voudrait de la farine.",
+    "seconds": 7.608
+  },
+  "13-narr.wav": {
+    "hash": "8365f52976ebc3e2e4817c5b4c617db5",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "La farine, c'est le meunier. Et le meunier… voudrait justement des pommes !",
+    "seconds": 5.904
+  },
+  "14-narr.wav": {
+    "hash": "43caaedeb58de5cb16e622f5f593f7ce",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Pour que tout le monde soit content, il faudrait réunir les cinq au même endroit, au même moment, et que tous échangent en même temps.",
+    "seconds": 7.56
+  },
+  "15-narr.wav": {
+    "hash": "b6cc2342d7fa5f898c133b1e2f8b42be",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Autant dire que c'est presque impossible. Les échanges sont bloqués.",
+    "seconds": 5.352
+  },
+  "16-naya.wav": {
+    "hash": "3ef6bd10803fda397eb2441b40292776",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Sacha, tu viens de découvrir un très vieux problème. Échanger une chose directement contre une autre, ça s'appelle le troc.",
+    "seconds": 6.912
+  },
+  "17-naya.wav": {
+    "hash": "1364bce2ab19a238248b208d609a0f85",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Le troc ne marche que si chacun veut exactement ce que l'autre possède.",
+    "seconds": 3.744
+  },
+  "18-naya.wav": {
+    "hash": "b3c89e355d1143be1938388e9e9d011f",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Alors, réfléchis : et si tout le monde acceptait une même petite chose, qu'on pourrait ensuite redonner à n'importe qui ?",
+    "seconds": 6.504
+  },
+  "19-sacha.wav": {
+    "hash": "c28583d19b3e13f9b5076f829f2f83a0",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Une chose que tout le monde accepte… Mais laquelle ?",
+    "seconds": 4.272
+  },
+  "20-narr.wav": {
+    "hash": "c29d77e05c78e7323972a8cefe200449",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Naya propose aux artisans des jetons en argile cuite.",
+    "seconds": 3.84
+  },
+  "21-narr.wav": {
+    "hash": "20e711e61b9ea69f7be9823c3d115a51",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Ils ont tous la même taille, et la même marque : celle du village.",
+    "seconds": 4.656
+  },
+  "22-narr.wav": {
+    "hash": "ec1d819100f1291e6a1c7dc3dca3a554",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Tous les habitants se mettent d'accord : ces jetons, chacun les accepte.",
+    "seconds": 4.896
+  },
+  "23-narr.wav": {
+    "hash": "5fb0c31ace4c6072d3ce48070bd7f8f3",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le meunier, qui voulait des pommes, achète le panier de Sacha pour trois jetons.",
+    "seconds": 5.28
+  },
+  "24-menuisier.wav": {
+    "hash": "06bd544f516b8ea63198172b3772aec9",
+    "role": "menuisier",
+    "voice": "fr-FR-HenriNeural",
+    "text": "Ma planche contre trois jetons ? Marché conclu !",
+    "seconds": 4.392
+  },
+  "25-menuisier.wav": {
+    "hash": "8ce5d1f15f5b0ce059120e2367238f78",
+    "role": "menuisier",
+    "voice": "fr-FR-HenriNeural",
+    "text": "Et avec ces jetons, j'irai acheter mes clous quand j'en aurai besoin.",
+    "seconds": 4.488
+  },
+  "26-narr.wav": {
+    "hash": "b5ac6f2a5b673b2e415baac3d9eaffe7",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "La forgeronne pourra payer la bergère, la bergère pourra payer le meunier… Plus besoin d'être tous là au même moment.",
+    "seconds": 7.944
+  },
+  "27-narr.wav": {
+    "hash": "b13892698fcae31e3e6490738f1462a3",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Voilà ce qu'est la monnaie : une chose que tout le monde accepte en échange.",
+    "seconds": 4.728
+  },
+  "28-narr.wav": {
+    "hash": "d00e2cf25933ce2378e4629fa7c81894",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Elle évite d'avoir à trouver quelqu'un qui veut exactement ce qu'on a.",
+    "seconds": 4.176
+  },
+  "29-narr.wav": {
+    "hash": "b4005d325410eabd6136b52a9a4fd3a3",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Et elle permet de comparer : une planche vaut trois jetons, un panier de pommes aussi.",
+    "seconds": 5.352
+  },
+  "30-naya.wav": {
+    "hash": "97ecd4b9499d846f51df800f7d0448fb",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "À toi, maintenant ! Chez toi, cherche un objet que ta famille a acheté.",
+    "seconds": 4.848
+  },
+  "31-naya.wav": {
+    "hash": "51a9768c8e81ab4d7fe29f9e52a19b66",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "S'il n'y avait pas de monnaie, qu'aurait-il fallu donner en échange ? Et à qui ?",
+    "seconds": 4.512
+  }
+}

@@ -1,0 +1,198 @@
+{
+  "01-narr.wav": {
+    "hash": "dbc38a02f9a8d15aed6452e419522095",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Sacha a aidé au potager toute la semaine. Pour son travail, la maraîchère lui donne cinq jetons.",
+    "seconds": 7.152
+  },
+  "02-sacha.wav": {
+    "hash": "aaef3ee2bf35adce33b6908ce985a696",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Cinq jetons, rien qu'à moi ! Je les ai bien gagnés.",
+    "seconds": 4.584
+  },
+  "03-maraichere.wav": {
+    "hash": "952a7b3bc8f52335196b79e6424475ae",
+    "role": "maraichere",
+    "voice": "fr-CA-SylvieNeural",
+    "text": "Merci pour ton aide, Sacha. Mes salades n'ont jamais été aussi belles !",
+    "seconds": 5.76
+  },
+  "04-milo.wav": {
+    "hash": "4fc388392dd413a40a731ff2bb99bc37",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Cinq jetons… Moi, je les rangerais tout de suite dans ma boîte, bien à l'abri.",
+    "seconds": 6.984
+  },
+  "05-sacha.wav": {
+    "hash": "bb3aad67da7f74990a99e3ea38e4b24d",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Pas moi ! Je vais trouver quelque chose de génial au marché.",
+    "seconds": 4.344
+  },
+  "06-narr.wav": {
+    "hash": "d57cb865e53b2ccfbfaf4ecc8fc3683a",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le jour même, au marché, l'artisan nomade vient d'installer son étal.",
+    "seconds": 5.184
+  },
+  "07-narr.wav": {
+    "hash": "25c93bf096d4e35061f8f0351927537d",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Deux objets attirent son regard : un coffret de pinceaux pour peindre, et un cerf-volant pour les jours de grand vent. Chacun coûte cinq jetons.",
+    "seconds": 8.808
+  },
+  "08-marchand.wav": {
+    "hash": "516135bd72fadab20f0b57340c41ce5d",
+    "role": "marchand",
+    "voice": "fr-BE-GerardNeural",
+    "text": "Ces pinceaux viennent de la ville des peintres, et ce cerf-volant a traversé trois vallées avant d'arriver ici !",
+    "seconds": 5.592
+  },
+  "09-sacha.wav": {
+    "hash": "be43abec20dcbf74bfe262d9414e16c3",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Je veux les deux ! Vous pouvez me faire une avance ? Ou alors je prends le coffret maintenant, et le cerf-volant tout de suite après !",
+    "seconds": 8.232
+  },
+  "10-marchand.wav": {
+    "hash": "2a973c9b4094fd236cb4a98bf51c9aae",
+    "role": "marchand",
+    "voice": "fr-BE-GerardNeural",
+    "text": "Une avance ? Je repars demain matin, mon garçon. Ici, on paie ce que l'on achète.",
+    "seconds": 7.08
+  },
+  "11-milo.wav": {
+    "hash": "1d497d972c8f0ad5090fd64950425a7f",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Sacha, compte tes jetons. Tu en as cinq. Le coffret en coûte cinq. Il t'en restera combien ?",
+    "seconds": 9.888
+  },
+  "12-sacha.wav": {
+    "hash": "0030ffe77643503c65f3897f5bdc1a11",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Euh… zéro.",
+    "seconds": 1.872
+  },
+  "13-milo.wav": {
+    "hash": "38a6545b742b8eb295ac646675f23204",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Avec zéro jeton, pas de cerf-volant. Tes jetons ne peuvent pas servir deux fois.",
+    "seconds": 6.792
+  },
+  "14-naya.wav": {
+    "hash": "c2670182099282a75c9b892fa1c3547f",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Tu vois, Sacha, chaque fois qu'on choisit quelque chose, on renonce à autre chose. C'est ce que j'appelle le choix invisible.",
+    "seconds": 6.912
+  },
+  "15-sacha.wav": {
+    "hash": "1dbc71ab34b311e5d464903743800fd7",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Un choix invisible ? Mais je ne vois rien du tout !",
+    "seconds": 3.96
+  },
+  "16-naya.wav": {
+    "hash": "3162bc08826020b3a2544408ef009029",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Justement. Regarde bien cette balance.",
+    "seconds": 3.096
+  },
+  "17-naya.wav": {
+    "hash": "8f1a44ecaed4e6b2431c5c0a94d78a84",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Si tu poses tes cinq jetons sur les pinceaux… le cerf-volant disparaît. Ce que tu laisses de côté, c'est le vrai prix de ton choix.",
+    "seconds": 7.104
+  },
+  "18-naya.wav": {
+    "hash": "9e67ac4485402e7d9091a9f40717ec82",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Et si tu les poses sur le cerf-volant, ce sont les pinceaux qui s'effacent.",
+    "seconds": 3.888
+  },
+  "19-milo.wav": {
+    "hash": "dbad1e0cfb62c1cbe40b17244c3cd468",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "On ne peut jamais garder les deux plateaux pleins en même temps.",
+    "seconds": 4.008
+  },
+  "20-naya.wav": {
+    "hash": "ed0388e7a8bb3c7df10c6d02e1eb33e7",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Alors, prends ton temps. Lequel compte le plus pour toi ?",
+    "seconds": 3.696
+  },
+  "21-sacha.wav": {
+    "hash": "ce53f5c89857027eab6ecfb06e6411e9",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Je crois que… j'ai vraiment envie de peindre la montagne de notre randonnée. Je prends les pinceaux.",
+    "seconds": 6.264
+  },
+  "22-narr.wav": {
+    "hash": "7afeb732cc6dd62cfc639295c8531aed",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Sacha a choisi. Et il sait exactement ce qu'il a laissé de côté : le cerf-volant.",
+    "seconds": 6.312
+  },
+  "23-sacha.wav": {
+    "hash": "1efcb97123199d7c40ebb24ec813b772",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Je suis un peu triste pour le cerf-volant… mais je suis content de mon choix.",
+    "seconds": 4.296
+  },
+  "24-milo.wav": {
+    "hash": "a7660394de255e9dab21781f31b82ad3",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Le cerf-volant, tu pourras peut-être l'acheter plus tard, si tu gagnes d'autres jetons.",
+    "seconds": 6.312
+  },
+  "25-narr.wav": {
+    "hash": "6f3bbac798ff3ac0a43bdae5b97eac8b",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Choisir, c'est renoncer. Chaque jeton ne peut être dépensé qu'une seule fois.",
+    "seconds": 6.096
+  },
+  "26-naya.wav": {
+    "hash": "8da12585bb4ab861870b8e020e68fbe9",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "À toi, maintenant ! Souviens-toi d'un choix que tu as fait récemment : un jouet, un goûter, une activité.",
+    "seconds": 6.864
+  },
+  "27-naya.wav": {
+    "hash": "75a898c481f9a9a34fb1b71d15c9cfb0",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Qu'as-tu laissé de côté ce jour-là ? C'était ton choix invisible.",
+    "seconds": 3.888
+  },
+  "28-naya.wav": {
+    "hash": "b3dfd7603e26f4074334b7617d937aad",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Il n'y a pas de bon ou de mauvais choix. Il y a ce qui compte le plus pour toi, ce jour-là.",
+    "seconds": 4.968
+  }
+}

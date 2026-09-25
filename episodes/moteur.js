@@ -1042,7 +1042,7 @@
         </div>
         <div class="toggles">
           <label><input type="checkbox" id="subs" checked> Sous-titres</label>
-          <label><input type="checkbox" id="voice"> Voix de synthèse (aperçu)</label>
+          <label><input type="checkbox" id="voice"> <span id="voice-label">Voix de synthèse (aperçu)</span></label>
         </div>
       </section>
       <section class="cols">
@@ -1071,6 +1071,7 @@
       $('f-notion').textContent = EP.notion; $('f-objectif').textContent = EP.objectif;
       $('f-duree').textContent = fmt(EP.T) + (EP.voix ? ' (voix enregistrée)' : ''); $('f-cible').textContent = EP.cible;
       $('f-dispositif').textContent = EP.dispositif;
+      voice.checked = EP.voix; $('voice-label').textContent = EP.voix ? 'Voix' : 'Voix de synthèse (aperçu)';
       [...eps.children].forEach((li, k) => li.firstChild.setAttribute('aria-current', k === i ? 'true' : 'false'));
       list.innerHTML = '';
       EP.scenes.forEach(S => {
@@ -1090,10 +1091,21 @@
       li.appendChild(b); eps.appendChild(li);
     });
 
-    function stopVoice() { try { speechSynthesis.cancel(); } catch (e) {} lastLine = null; }
+    let clip = null;
+    function stopVoice() { try { speechSynthesis.cancel(); } catch (e) {} if (clip) { clip.pause(); clip = null; } lastLine = null; }
     function speak() {
       if (!voice.checked || !playing || CUR === lastLine) return;
       lastLine = CUR;
+      // Voix enregistrée (tools/voix_edge.py ou tools/voix_voxcpm.py) : audio/NN-personnage.wav, reprise au bon instant.
+      if (EP.voix && CUR && !EP.sansFichiers) {
+        const line = CUR;
+        if (clip) clip.pause();
+        clip = new Audio(`audio/${String(line.n).padStart(2, '0')}-${line.who}.wav`);
+        clip.addEventListener('loadedmetadata', () => { clip.currentTime = Math.max(0, cur - line.gs); }, { once: true });
+        clip.addEventListener('error', () => { EP.sansFichiers = true; lastLine = null; }, { once: true });
+        clip.play().catch(() => {});
+        return;
+      }
       try {
         speechSynthesis.cancel();
         if (CUR) {

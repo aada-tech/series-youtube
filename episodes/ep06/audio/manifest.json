@@ -1,0 +1,198 @@
+{
+  "01-narr.wav": {
+    "hash": "3f4c73d47c956065cf9ea4ca6251624e",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Aujourd'hui, Naya emmène Sacha et Milo au bourg, la grande ville commerçante, de l'autre côté de la rivière.",
+    "seconds": 7.368
+  },
+  "02-naya.wav": {
+    "hash": "ae8763e071debd9a8712594687d0dd98",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Restez près de moi, le bourg est bien plus grand que notre village !",
+    "seconds": 3.576
+  },
+  "03-narr.wav": {
+    "hash": "bd5559722261ca3226be13aa3eaf6300",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Ici, les clients ne sortent pas de jetons. Ils approchent une carte d'une petite borne… bip ! Et ils repartent avec leurs achats.",
+    "seconds": 9.144
+  },
+  "04-sacha.wav": {
+    "hash": "3c8ebdd962211859e937c8b8d9a079e6",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Tu as vu ? Pas besoin de jetons ! Avec une carte, tout est gratuit !",
+    "seconds": 6.144
+  },
+  "05-sacha.wav": {
+    "hash": "8c11e31a57ff43b79e85b7c509c60169",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Il m'en faut une. Comme ça, je pourrai acheter tout ce que je veux, autant que je veux !",
+    "seconds": 5.856
+  },
+  "06-milo.wav": {
+    "hash": "c2f3ba28f3436f4c60415d5c0b1ec3d1",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Gratuit ? Ça m'étonnerait. L'épicière ne donne pas son pain pour rien.",
+    "seconds": 6.816
+  },
+  "07-narr.wav": {
+    "hash": "e185901ae47d4f497c844bd26afceec6",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Alors, cette carte est-elle vraiment magique ?",
+    "seconds": 3.456
+  },
+  "08-naya.wav": {
+    "hash": "ae1f124cbbabf8a6db78c1254580c523",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Imaginons qu'on puisse voir sous le magasin. Regardez bien ce qui se passe quand la borne fait bip.",
+    "seconds": 5.232
+  },
+  "09-naya.wav": {
+    "hash": "93ff02b96e2ba30bfeca04acb4960aff",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "La carte du meunier est reliée à son compte, comme par un tuyau. Dans ce compte, il y a l'argent qu'il a déjà gagné en travaillant au moulin.",
+    "seconds": 7.368
+  },
+  "10-narr.wav": {
+    "hash": "b9026785c3557d960ebf994e3fb7cb6e",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Bip ! Le pain coûte trois jetons. Trois jetons quittent le compte du meunier… et arrivent dans celui de l'épicière.",
+    "seconds": 8.52
+  },
+  "11-milo.wav": {
+    "hash": "aae1497da6ac5359de8833bc74f79733",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Il avait dix jetons. Il en reste sept. Exactement comme s'il avait payé avec de vrais jetons !",
+    "seconds": 8.256
+  },
+  "12-narr.wav": {
+    "hash": "197c94f2d30717a6f91d0fc9f9b58901",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Deuxième achat : un pot de miel, à cinq jetons. Bip ! Il en reste deux.",
+    "seconds": 7.08
+  },
+  "13-narr.wav": {
+    "hash": "2f4736bd3dd378b306c1cccb3c5fdc04",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Troisième achat : un beau fromage, à quatre jetons.",
+    "seconds": 4.2
+  },
+  "14-narr.wav": {
+    "hash": "30ced674e4f0fe26f4c7f857b40b5274",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Mais le compte n'en contient plus que deux. Le tuyau ne peut pas faire passer ce qui n'existe pas. La borne refuse.",
+    "seconds": 8.304
+  },
+  "15-sacha.wav": {
+    "hash": "74f8df89e3d0b8b2f221267156e22c24",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Alors la carte ne crée pas d'argent… Elle va juste le chercher dans le compte !",
+    "seconds": 5.304
+  },
+  "16-naya.wav": {
+    "hash": "2f2e99efa507c44f6f8d572e8ef231b4",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Exactement. La carte, c'est une clé qui ouvre ton compte. Ce n'est pas une source d'argent.",
+    "seconds": 5.928
+  },
+  "17-epiciere.wav": {
+    "hash": "526fc84ecb344f1af389a35d00bdd2ee",
+    "role": "epiciere",
+    "voice": "fr-BE-CharlineNeural",
+    "text": "Pas de souci, je vous le garde. Vous reviendrez le prendre quand votre compte sera de nouveau rempli.",
+    "seconds": 6.624
+  },
+  "18-sacha.wav": {
+    "hash": "be7efa1e3f174179284b1c95150658e7",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Mais alors, comment le compte du meunier se remplit-il ?",
+    "seconds": 3.912
+  },
+  "19-narr.wav": {
+    "hash": "419ffa7b2be745eb6011bcf1636397ea",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le meunier moud le blé pour tout le village. Chaque fois qu'un client le paie, les jetons arrivent dans son compte.",
+    "seconds": 7.152
+  },
+  "20-milo.wav": {
+    "hash": "93ce5fd32154f4a61f791ab520675163",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Donc sa carte ne marche que parce qu'il a travaillé avant. Comme l'armoire du village !",
+    "seconds": 6.792
+  },
+  "21-naya.wav": {
+    "hash": "5c5d74aac1fb5ed7967cf827d9ae2444",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Oui. D'abord on gagne, ensuite on dépense. La carte ne change rien à cet ordre-là.",
+    "seconds": 5.856
+  },
+  "22-naya.wav": {
+    "hash": "43a921f4ae55d466ddec1f76b06ff818",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Avec des jetons dans la main, on voit tout de suite ce qu'il reste. Avec une carte, l'argent devient invisible.",
+    "seconds": 6.312
+  },
+  "23-milo.wav": {
+    "hash": "03a23badb6162c7670c74fbe2c8cc45c",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Alors, avant de payer avec une carte, il faut vérifier combien il reste dans le compte.",
+    "seconds": 6.504
+  },
+  "24-sacha.wav": {
+    "hash": "c9d25e0a3958fb359ec495c968861445",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et compter dans sa tête, à chaque bip, comme si on donnait de vrais jetons.",
+    "seconds": 4.536
+  },
+  "25-narr.wav": {
+    "hash": "dbf64f5e113d14286984325170b1eac8",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Pour savoir où ils en sont, beaucoup d'adultes consultent le solde de leur compte, sur un écran ou sur un relevé.",
+    "seconds": 6.864
+  },
+  "26-narr.wav": {
+    "hash": "2f2d56a3208be142becf3b009b107e1f",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Payer avec une carte, c'est payer pour de vrai. L'argent quitte le compte, même quand on ne le voit pas bouger.",
+    "seconds": 7.536
+  },
+  "27-naya.wav": {
+    "hash": "4745db7e3f2cf2d4a078b46a9c4bc510",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "À toi, maintenant ! La prochaine fois qu'un adulte paie avec une carte, écoute bien le bip.",
+    "seconds": 5.616
+  },
+  "28-naya.wav": {
+    "hash": "a00d2ea168ba29cec337707d48aa9ad4",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Et demande-lui : d'où vient cet argent ? Et où s'en va-t-il ?",
+    "seconds": 3.936
+  }
+}

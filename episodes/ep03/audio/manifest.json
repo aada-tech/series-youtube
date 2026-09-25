@@ -1,0 +1,212 @@
+{
+  "01-narr.wav": {
+    "hash": "4e093ab27af7dbc44df09a75dc33ff7c",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Demain, l'équipe part en randonnée dans la montagne. Une grande marche, du matin jusqu'au soir.",
+    "seconds": 7.104
+  },
+  "02-naya.wav": {
+    "hash": "99f72612be249e470c270e09d21af863",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Voici dix jetons pour préparer le ravitaillement. Choisissez bien : c'est tout ce que nous avons.",
+    "seconds": 5.28
+  },
+  "03-sacha.wav": {
+    "hash": "eeb935691d5935f3a4e8bca59f58585c",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Dix jetons ! On est riches !",
+    "seconds": 3.024
+  },
+  "04-milo.wav": {
+    "hash": "df42d77e55ab0deabfeff9aa5ed899a6",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Dix jetons pour toute une journée de marche… Il va falloir compter.",
+    "seconds": 5.592
+  },
+  "05-narr.wav": {
+    "hash": "6d2f87764b7266551fd82aa03bcf00f3",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Mais comment choisir, quand tout fait envie ?",
+    "seconds": 3.144
+  },
+  "06-epiciere.wav": {
+    "hash": "44f75c17de4c77b657048005d3e43107",
+    "role": "epiciere",
+    "voice": "fr-BE-CharlineNeural",
+    "text": "Bonjour les enfants ! Tout est à vendre. Le prix est indiqué sous chaque article.",
+    "seconds": 6.48
+  },
+  "07-sacha.wav": {
+    "hash": "cb0b83db61ec4dccc8f92e18d4dd2ea7",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Regarde, Milo ! Une toupie qui s'allume, des bonbons acidulés, et une longue-vue en cuivre ! Avec dix jetons, on prend tout ça !",
+    "seconds": 9.744
+  },
+  "08-milo.wav": {
+    "hash": "8b5a3766c7f14d9a283171804048f001",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Non ! Pour la marche, il nous faut de l'eau, des galettes pour l'énergie, et une trousse de secours si quelqu'un se blesse.",
+    "seconds": 8.76
+  },
+  "09-sacha.wav": {
+    "hash": "8d422a9a7ece25c675ebcfa4f4481af5",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Mais c'est beaucoup moins amusant !",
+    "seconds": 2.28
+  },
+  "10-milo.wav": {
+    "hash": "ef7a019694a021b7b0cec7c74848f0ba",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Amusant, peut-être. Mais en haut de la montagne, ta toupie ne te donnera pas à boire !",
+    "seconds": 7.2
+  },
+  "11-narr.wav": {
+    "hash": "5273727d5f1951d5a25bf9ec729c8790",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le ton monte entre les deux garçons. Naya a une idée pour trancher, sans se fâcher.",
+    "seconds": 6.264
+  },
+  "12-naya.wav": {
+    "hash": "400d3bc3a649220c717a88be8457d4cc",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "On va faire deux boîtes. Dans la boîte verte, ce dont on a absolument besoin : sans ça, notre santé ou notre sécurité sont en danger.",
+    "seconds": 7.92
+  },
+  "13-naya.wav": {
+    "hash": "2c00cb4e730e6cac58ecd22ce29c5e42",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Dans la boîte rouge, ce qui fait plaisir, mais dont on peut se passer sans danger.",
+    "seconds": 4.392
+  },
+  "14-naya.wav": {
+    "hash": "245fedfd250a2f90112b3bdc5d496147",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Pour chaque objet, posons-nous la même question : que se passe-t-il si nous ne l'avons pas ?",
+    "seconds": 4.536
+  },
+  "15-narr.wav": {
+    "hash": "c59eee59a0c863bca6f2bc44ca2c2597",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "L'eau ? Sans eau, on a soif, et on ne peut plus marcher. Boîte verte.",
+    "seconds": 6.792
+  },
+  "16-narr.wav": {
+    "hash": "0b62efbb63860b18a47254b322f190d2",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Les galettes ? Sans elles, plus d'énergie pour grimper. Boîte verte.",
+    "seconds": 6.792
+  },
+  "17-narr.wav": {
+    "hash": "072ad9edbefa575d6781f776b2e9cdf6",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "La trousse de secours ? Si quelqu'un se blesse, il faut pouvoir le soigner. Boîte verte.",
+    "seconds": 7.608
+  },
+  "18-narr.wav": {
+    "hash": "616408f020f78c3abfa71f9a64cf510d",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "La toupie, les bonbons, la longue-vue ? Ce serait agréable… mais sans eux, personne n'est en danger. Boîte rouge.",
+    "seconds": 9.528
+  },
+  "19-sacha.wav": {
+    "hash": "5c98be473cad3d06696dd494c1e927fc",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "D'accord… La boîte rouge, ce n'est pas interdit. C'est juste moins urgent.",
+    "seconds": 6.432
+  },
+  "20-sacha.wav": {
+    "hash": "f47086b4d202ed1501e7d240fde3d52d",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et si on avait tout dépensé dans la boîte rouge d'abord ?",
+    "seconds": 3.384
+  },
+  "21-naya.wav": {
+    "hash": "c7d83fd7618cf22ce963cf5a4ae92c0d",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Compte avec moi. La toupie, les bonbons et la longue-vue coûtent dix jetons. Il ne resterait plus rien pour l'eau, les galettes et la trousse.",
+    "seconds": 7.824
+  },
+  "22-narr.wav": {
+    "hash": "27b0c6ef7c0468ac619c6485b7a647ab",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Alors l'équipe paie d'abord la boîte verte : deux, plus trois, plus trois… huit jetons. Il en reste deux.",
+    "seconds": 7.632
+  },
+  "23-milo.wav": {
+    "hash": "260f65926c5736001167c314470152c5",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Deux jetons… c'est exactement le prix des bonbons !",
+    "seconds": 3.984
+  },
+  "24-sacha.wav": {
+    "hash": "d1d663d606b1fe4e35afa3eb3dff3185",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Des bonbons pour fêter le sommet ! Tout le monde sera content.",
+    "seconds": 4.56
+  },
+  "25-narr.wav": {
+    "hash": "271e86bd654dea23238ddc9691946b12",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Se faire plaisir, ça compte aussi. Il suffit de s'occuper d'abord de ce qui est vital.",
+    "seconds": 6.624
+  },
+  "26-narr.wav": {
+    "hash": "cbfe24736c05dc496460ea774d144998",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le lendemain, au sommet, l'équipe boit, reprend des forces… et partage les bonbons.",
+    "seconds": 6.048
+  },
+  "27-sacha.wav": {
+    "hash": "908137debb316ccea3d7b9857904c410",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Quelle vue ! Et heureusement qu'on avait de l'eau : j'avais tellement soif en montant.",
+    "seconds": 5.208
+  },
+  "28-milo.wav": {
+    "hash": "10097db52f1a3298262da006ffe605c9",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et les bonbons, finalement… c'était une très bonne idée.",
+    "seconds": 4.392
+  },
+  "29-naya.wav": {
+    "hash": "977ab2097063316abb8f11cf88e5cca8",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "À toi, maintenant ! La prochaine fois que tu fais les courses avec ta famille, regarde dans le panier.",
+    "seconds": 5.664
+  },
+  "30-naya.wav": {
+    "hash": "28c3bfb3bb049198469b18afea382f6f",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Qu'est-ce qui irait dans la boîte verte ? Et qu'est-ce qui irait dans la boîte rouge ?",
+    "seconds": 4.056
+  }
+}

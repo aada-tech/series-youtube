@@ -1,0 +1,240 @@
+{
+  "01-narr.wav": {
+    "hash": "e18e8a8b4113aa87e392841b7e5a572b",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "À l'atelier de mécanique, la mécanicienne expose un kit d'engrenages pour construire une pompe à eau automatique.",
+    "seconds": 6.96
+  },
+  "02-sacha.wav": {
+    "hash": "89658d10ab9b3c607b7aa6d5992f2860",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Avec ça, je pourrais arroser tout le potager sans porter un seul seau ! Combien ça coûte ?",
+    "seconds": 6.216
+  },
+  "03-mecanicienne.wav": {
+    "hash": "5dc6edd15e58490e6c00260a5d5406e5",
+    "role": "mecanicienne",
+    "voice": "fr-CH-ArianeNeural",
+    "text": "Douze jetons. Toutes les pièces sont dans la boîte, avec le plan de montage.",
+    "seconds": 5.136
+  },
+  "04-narr.wav": {
+    "hash": "b8a27ebdf5a89345bea0d4636c277734",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Douze jetons ! Sacha en gagne quatre par semaine, en aidant à nettoyer les ateliers.",
+    "seconds": 6.552
+  },
+  "05-sacha.wav": {
+    "hash": "50cde5cfe037ee2bec4e7e2c92b1c5fc",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Douze… c'est beaucoup trop. Je n'y arriverai jamais. Autant acheter des figurines cette semaine.",
+    "seconds": 7.08
+  },
+  "06-narr.wav": {
+    "hash": "9dd262083a2d68bc3f3c6026c71e52b2",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Est-ce vraiment impossible ? Ou est-ce seulement… long ?",
+    "seconds": 4.632
+  },
+  "07-milo.wav": {
+    "hash": "482e7739119dadc1b98fdddd8e836bfb",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Attends ! Moi, j'utilise trois bocaux. Le premier, pour les petites envies de la semaine.",
+    "seconds": 8.52
+  },
+  "08-milo.wav": {
+    "hash": "73d7f6d4f2c7a83633af8703d2be661c",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Le deuxième, pour un grand projet. Et le troisième, c'est une réserve d'entraide : pour aider quelqu'un, ou pour faire face à un imprévu.",
+    "seconds": 10.464
+  },
+  "09-milo.wav": {
+    "hash": "6a258a65008ca3389f84c5dde915ccd7",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "D'ailleurs, moi, je mets presque tout dans le bocal du projet. Je ne dépense jamais rien !",
+    "seconds": 7.368
+  },
+  "10-naya.wav": {
+    "hash": "69f7be1345d0b5a609e292f18ec033b5",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Chacun fait comme il veut, Milo. Sacha, combien veux-tu mettre dans chaque bocal ? C'est toi qui décides.",
+    "seconds": 6.816
+  },
+  "11-sacha.wav": {
+    "hash": "cc9e657cf0360d6ed32ef9071bd250bb",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Deux jetons pour la pompe, un pour mes petites envies, et un pour l'entraide.",
+    "seconds": 4.728
+  },
+  "12-sacha.wav": {
+    "hash": "e20e37007a6bdc68373aaa5e39c17daf",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et si je mets mes quatre jetons dans la pompe, ça ira deux fois plus vite !",
+    "seconds": 4.464
+  },
+  "13-milo.wav": {
+    "hash": "4bff8b74fc5c02b9fc2312a15ecbbc17",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Oui, mais alors plus de petites envies, et plus rien pour aider quelqu'un.",
+    "seconds": 5.352
+  },
+  "14-naya.wav": {
+    "hash": "bef0d59da920ec8e57ef465ef61c8ff6",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "C'est possible aussi. Il n'y a pas une seule bonne façon de faire : à toi de trouver l'équilibre qui te convient.",
+    "seconds": 6.0
+  },
+  "15-sacha.wav": {
+    "hash": "6aa17b522c934a3eae48fb7b9f6e63c5",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Alors je garde mon partage : deux, un, un.",
+    "seconds": 3.744
+  },
+  "16-naya.wav": {
+    "hash": "38a0a00f5a8a101a4baee52c8e90b392",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Deux jetons par semaine, pour un projet de douze. Combien de semaines faut-il ?",
+    "seconds": 4.8
+  },
+  "17-milo.wav": {
+    "hash": "09c0eeb00f5c6deb151f18ff3b0f1fb5",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Deux, quatre, six, huit, dix, douze… Six semaines !",
+    "seconds": 6.528
+  },
+  "18-narr.wav": {
+    "hash": "f2ecdc3d93f49e6cc1e29d1ffc873cde",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Première semaine : Sacha nettoie les établis et range les outils. Quatre jetons ! Deux pour la pompe, un pour ses envies, un pour l'entraide.",
+    "seconds": 10.248
+  },
+  "19-narr.wav": {
+    "hash": "88660f59fe2176d89a19f150a83ec842",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Deuxième semaine, même travail, même partage. Le bocal du projet contient déjà quatre jetons.",
+    "seconds": 7.584
+  },
+  "20-narr.wav": {
+    "hash": "f63552900236f8bc1ef59d1a3054a29a",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Troisième semaine : au marché, Sacha voit une figurine à deux jetons. Il la paie avec son bocal des petites envies.",
+    "seconds": 8.184
+  },
+  "21-sacha.wav": {
+    "hash": "8f4248041be3ce644be9a60e44390da1",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "J'aurais pu prendre les jetons de la pompe pour en acheter une autre… Mais non. Ma pompe d'abord !",
+    "seconds": 6.984
+  },
+  "22-narr.wav": {
+    "hash": "9de47545bb21d3d61f10c1ab03d0fa22",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Quatrième semaine : le bocal du projet continue de monter… et la pompe se dessine, trait après trait.",
+    "seconds": 6.888
+  },
+  "23-narr.wav": {
+    "hash": "b3aec3a7d83172b1f1e12e0e2cd547bf",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Cinquième semaine : un orage renverse la clôture de la bergère. Sacha ouvre son bocal d'entraide, et l'aide à racheter du bois.",
+    "seconds": 8.928
+  },
+  "24-bergere.wav": {
+    "hash": "0d125b4bca1ecba1be304ba9acc4ec86",
+    "role": "bergere",
+    "voice": "fr-CH-ArianeNeural",
+    "text": "Merci, Sacha ! Sans toi, mes moutons se seraient échappés dans la forêt.",
+    "seconds": 6.408
+  },
+  "25-sacha.wav": {
+    "hash": "950e206db1518d35f05bb0de3ef1e52c",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et le bocal de la pompe, je n'y ai pas touché. Plus qu'une semaine !",
+    "seconds": 5.136
+  },
+  "26-narr.wav": {
+    "hash": "32c53828beba313296543fc9eea00907",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Sixième semaine : douze jetons !",
+    "seconds": 2.832
+  },
+  "27-narr.wav": {
+    "hash": "14d581782c91456bd73546f2a4e8c74b",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Sacha achète le kit. Avec Milo, il assemble les engrenages en suivant le plan, pièce après pièce.",
+    "seconds": 7.752
+  },
+  "28-sacha.wav": {
+    "hash": "00df83186937c040940a788e1b0e9ef4",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Je l'ai fait ! Et regarde : l'eau monte toute seule jusqu'au potager !",
+    "seconds": 5.04
+  },
+  "29-naya.wav": {
+    "hash": "3c625cf8fbfc04e82de61f43970629fb",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Tu as attendu six semaines. Sans ces six semaines de patience, cette pompe n'existerait pas.",
+    "seconds": 5.328
+  },
+  "30-narr.wav": {
+    "hash": "f6dc5ad16d05fe5d530b99208eb94a9a",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Mettre de côté une partie de ce qu'on gagne, c'est ce qu'on appelle épargner. Cela permet d'atteindre des projets qu'on ne pourrait pas s'offrir d'un seul coup.",
+    "seconds": 9.12
+  },
+  "31-milo.wav": {
+    "hash": "a5bbf21308469dbfe6f26c9a70f0f872",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et ma réserve d'entraide… je crois que je vais l'utiliser pour acheter des graines pour le potager de tout le monde.",
+    "seconds": 7.248
+  },
+  "32-naya.wav": {
+    "hash": "78fabd16b0f6bb8226cac7223fc45d5c",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "À toi, maintenant ! Y a-t-il un grand projet dont tu rêves ?",
+    "seconds": 3.936
+  },
+  "33-naya.wav": {
+    "hash": "411b93c696b709acc89b44fcde166ef4",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Combien coûte-t-il ? Et combien de semaines faudrait-il pour y arriver, en mettant un peu de côté chaque semaine ?",
+    "seconds": 5.952
+  },
+  "34-naya.wav": {
+    "hash": "d87cdd2ab57d1ed078fc3071cf84212d",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Tu peux dessiner ton propre bocal, avec des traits pour compter les semaines. Chaque trait te rapproche de ton projet.",
+    "seconds": 6.048
+  }
+}

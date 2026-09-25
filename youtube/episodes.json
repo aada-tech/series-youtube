@@ -1,0 +1,72 @@
+{
+  "serie": "Le Village des Trois Moulins",
+  "lancement": "2026-10-07",
+  "heure": "10:00",
+  "hashtags": ["#educationfinanciere", "#dessinanime", "#pourenfants"],
+  "tags_communs": ["éducation financière enfants", "argent expliqué aux enfants", "dessin animé éducatif", "apprendre l'argent", "économie pour enfants", "cycle 2", "CP CE1 CE2", "6-9 ans", "Le Village des Trois Moulins", "Sacha Milo Naya"],
+  "episodes": [
+    {
+      "id": "ep01",
+      "titre_serie": "L'Énigme des Pommes et des Briques",
+      "titre": "Pourquoi a-t-on inventé l'argent ? 🍎 Le troc expliqué aux enfants | Ép. 1",
+      "accroche": "Sacha veut une planche de bois… mais le menuisier ne veut pas de ses pommes ! Comment faire quand personne ne veut ce que tu as ?",
+      "resume": "Au Village des Trois Moulins, Sacha essaie d'échanger ses pommes contre une planche. Mais le menuisier veut des clous, la forgeronne veut de la laine… et plus personne n'arrive à échanger ! Naya propose une idée toute simple : un petit jeton que tout le monde accepte. C'est la naissance de la monnaie.",
+      "objectifs": ["Comprendre ce qu'est le troc et pourquoi il bloque vite", "Découvrir la monnaie comme un objet que tout le monde accepte", "Voir que la monnaie permet de comparer le prix des choses"],
+      "tags": ["troc", "histoire de la monnaie", "pourquoi l'argent existe", "à quoi sert l'argent"]
+    },
+    {
+      "id": "ep02",
+      "titre_serie": "D'où Viennent les Pièces ?",
+      "titre": "D'où vient l'argent ? 🪙 Le travail expliqué aux enfants | Ép. 2",
+      "accroche": "Il suffit de tirer un levier pour avoir des jetons ? Sacha en est sûr… Milo, beaucoup moins !",
+      "resume": "Sacha découvre l'armoire du village : on tire un levier, et les jetons tombent ! Il croit qu'elle est magique. Avec Naya et Milo, il visite la maraîchère et le meunier, et comprend que chaque jeton vient d'abord d'un travail : du temps, de l'effort et un savoir-faire.",
+      "objectifs": ["Relier l'argent au travail, au temps et à l'effort", "Comprendre qu'un distributeur ne rend que ce qu'on y a déposé", "Reconnaître les services rendus par les gens autour de soi"],
+      "tags": ["d'où vient l'argent", "travail et argent", "distributeur de billets enfant", "métiers"]
+    },
+    {
+      "id": "ep03",
+      "titre_serie": "La Boîte Rouge et la Boîte Verte",
+      "titre": "Besoin ou envie ? 🟢🔴 Apprendre à bien dépenser | Ép. 3",
+      "accroche": "Dix jetons pour préparer une randonnée en montagne… et Sacha veut tout dépenser en bonbons et en longue-vue !",
+      "resume": "Sacha et Milo doivent acheter de quoi partir en randonnée. Sacha est attiré par les friandises et les gadgets ; Milo pense à l'eau et à la trousse de secours. Naya leur apprend un tri tout simple : la boîte verte pour les besoins, la boîte rouge pour les envies. Et une fois le vital assuré, il reste même de quoi se faire plaisir !",
+      "objectifs": ["Distinguer un besoin d'une envie", "Se demander « que se passe-t-il si on ne l'a pas ? »", "Comprendre qu'on paie d'abord l'essentiel, sans culpabiliser le plaisir"],
+      "tags": ["besoin ou envie", "apprendre à dépenser", "faire les courses enfant", "priorités"]
+    },
+    {
+      "id": "ep04",
+      "titre_serie": "L'Aventure du Choix Invisible",
+      "titre": "Choisir, c'est renoncer ! 🎨🪁 Le choix invisible expliqué aux enfants | Ép. 4",
+      "accroche": "Cinq jetons, deux trésors au même prix : les pinceaux ou le cerf-volant ? Sacha voudrait les deux…",
+      "resume": "Sacha a gagné cinq jetons en travaillant au potager. Chez l'artisan nomade, il hésite entre une boîte de pinceaux et un cerf-volant, qui coûtent chacun cinq jetons. Avec une balance, Naya lui montre le « choix invisible » : acheter l'un, c'est renoncer à l'autre. Sacha prend le temps de choisir ce qui compte le plus pour lui.",
+      "objectifs": ["Comprendre que l'argent est limité", "Découvrir que chaque achat fait renoncer à autre chose", "Choisir sereinement selon ce qui compte le plus pour soi"],
+      "tags": ["coût d'opportunité", "faire un choix", "rareté", "prendre une décision enfant"]
+    },
+    {
+      "id": "ep05",
+      "titre_serie": "Le Pouvoir de la Patience",
+      "titre": "Apprendre à épargner ⏳ La méthode des 3 bocaux | Ép. 5",
+      "accroche": "Un kit à 12 jetons quand on en gagne 4 par semaine… impossible ? Pas avec les trois bocaux de Milo !",
+      "resume": "Sacha rêve d'un kit d'engrenages pour construire une pompe à eau, mais il coûte douze jetons. Plutôt que de tout dépenser en petites figurines, Milo lui montre la méthode des trois bocaux : un pour les petites envies, un pour le projet, un pour l'entraide. Semaine après semaine, le bocal se remplit… et la patience paie !",
+      "objectifs": ["Découvrir l'épargne pour un projet", "Utiliser la méthode des trois bocaux (dépenser, épargner, partager)", "Ressentir la fierté d'atteindre un objectif grâce à la patience"],
+      "tags": ["épargne enfant", "méthode des bocaux", "tirelire", "patience", "argent de poche"]
+    },
+    {
+      "id": "ep06",
+      "titre_serie": "La Carte Magique n'est pas Magique !",
+      "titre": "La carte bancaire, c'est magique ? 💳 L'argent invisible expliqué aux enfants | Ép. 6",
+      "accroche": "Bip ! Une carte, et hop, on repart avec ses courses… Sacha croit avoir trouvé une carte magique !",
+      "resume": "En ville, Sacha voit des clients payer d'un simple « bip » avec une carte. Il pense qu'elle donne de l'argent à l'infini. Naya et Milo ouvrent le mécanisme : la carte est comme un tuyau relié au compte, qui s'est rempli grâce au travail. À chaque bip, l'argent passe d'un compte à l'autre… et quand le compte est vide, plus de bip !",
+      "objectifs": ["Comprendre que payer par carte, c'est dépenser de l'argent réel", "Voir le lien entre le compte, le travail et les achats", "Apprendre que l'argent invisible demande encore plus d'attention"],
+      "tags": ["carte bancaire enfant", "paiement sans contact", "argent numérique", "compte en banque expliqué"]
+    },
+    {
+      "id": "ep07",
+      "titre_serie": "Le Grand Chantier de la Cabane",
+      "titre": "Faire un budget 🏗️ Le grand chantier de la cabane | Ép. 7 (final)",
+      "accroche": "Construire une cabane avec un budget serré… et soudain, une poutre se brise ! Le plan de Milo va-t-il tenir ?",
+      "resume": "Pour le grand final, Sacha, Milo et Naya construisent une cabane. Milo prépare un budget : ce qui est obligatoire, ce qui fait plaisir, et une petite réserve pour les imprévus. Quand une poutre casse sous le vent, la réserve sauve le chantier ! Un épisode qui réunit tout ce qu'on a appris dans la série.",
+      "objectifs": ["Construire un budget simple : ressources, obligatoire, plaisir", "Prévoir une réserve pour les imprévus", "Mener un projet à plusieurs, du plan jusqu'au bout"],
+      "tags": ["budget enfant", "faire un budget", "imprévus", "projet en famille", "gestion de l'argent"]
+    }
+  ]
+}

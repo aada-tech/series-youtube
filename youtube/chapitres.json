@@ -1,0 +1,233 @@
+{
+  "ep01": {
+    "duree": "4:09",
+    "chapitres": [
+      {
+        "t": "0:00",
+        "titre": "Générique"
+      },
+      {
+        "t": "0:07",
+        "titre": "Le village"
+      },
+      {
+        "t": "0:36",
+        "titre": "Chez le menuisier"
+      },
+      {
+        "t": "1:00",
+        "titre": "Chez la forgeronne"
+      },
+      {
+        "t": "1:20",
+        "titre": "La chaîne bloquée"
+      },
+      {
+        "t": "1:55",
+        "titre": "Naya et le troc"
+      },
+      {
+        "t": "2:26",
+        "titre": "Les jetons d'argile"
+      },
+      {
+        "t": "2:50",
+        "titre": "Tout circule"
+      },
+      {
+        "t": "3:25",
+        "titre": "Ce qu'est la monnaie"
+      },
+      {
+        "t": "3:47",
+        "titre": "À toi de chercher"
+      }
+    ]
+  },
+  "ep02": {
+    "duree": "4:17",
+    "chapitres": [
+      {
+        "t": "0:00",
+        "titre": "Générique"
+      },
+      {
+        "t": "0:07",
+        "titre": "L'armoire du village"
+      },
+      {
+        "t": "0:58",
+        "titre": "Au potager"
+      },
+      {
+        "t": "1:52",
+        "titre": "Au moulin"
+      },
+      {
+        "t": "2:31",
+        "titre": "Dans l'armoire"
+      },
+      {
+        "t": "3:20",
+        "titre": "D'où viennent les pièces"
+      },
+      {
+        "t": "3:54",
+        "titre": "À toi de chercher"
+      }
+    ]
+  },
+  "ep03": {
+    "duree": "4:11",
+    "chapitres": [
+      {
+        "t": "0:00",
+        "titre": "Générique"
+      },
+      {
+        "t": "0:07",
+        "titre": "Préparer la randonnée"
+      },
+      {
+        "t": "0:41",
+        "titre": "Au marché"
+      },
+      {
+        "t": "1:32",
+        "titre": "Deux boîtes"
+      },
+      {
+        "t": "2:41",
+        "titre": "L'ordre compte"
+      },
+      {
+        "t": "3:29",
+        "titre": "À toi de trier"
+      }
+    ]
+  },
+  "ep04": {
+    "duree": "3:52",
+    "chapitres": [
+      {
+        "t": "0:00",
+        "titre": "Générique"
+      },
+      {
+        "t": "0:07",
+        "titre": "Cinq jetons"
+      },
+      {
+        "t": "0:52",
+        "titre": "L'étal de l'artisan"
+      },
+      {
+        "t": "1:53",
+        "titre": "Le choix invisible"
+      },
+      {
+        "t": "2:42",
+        "titre": "Sacha choisit"
+      },
+      {
+        "t": "3:22",
+        "titre": "Ton choix invisible"
+      }
+    ]
+  },
+  "ep05": {
+    "duree": "5:02",
+    "chapitres": [
+      {
+        "t": "0:00",
+        "titre": "Générique"
+      },
+      {
+        "t": "0:07",
+        "titre": "À l'atelier de mécanique"
+      },
+      {
+        "t": "0:55",
+        "titre": "Les trois bocaux"
+      },
+      {
+        "t": "2:23",
+        "titre": "Semaine après semaine"
+      },
+      {
+        "t": "3:46",
+        "titre": "La pompe du potager"
+      },
+      {
+        "t": "4:32",
+        "titre": "Ton grand projet"
+      }
+    ]
+  },
+  "ep06": {
+    "duree": "4:10",
+    "chapitres": [
+      {
+        "t": "0:00",
+        "titre": "Générique"
+      },
+      {
+        "t": "0:07",
+        "titre": "Au bourg"
+      },
+      {
+        "t": "1:02",
+        "titre": "Ce que cache la borne"
+      },
+      {
+        "t": "1:52",
+        "titre": "Le compte vide"
+      },
+      {
+        "t": "2:32",
+        "titre": "Comment le compte se remplit"
+      },
+      {
+        "t": "3:05",
+        "titre": "L'argent invisible"
+      },
+      {
+        "t": "3:48",
+        "titre": "Écoute le bip"
+      }
+    ]
+  },
+  "ep07": {
+    "duree": "5:22",
+    "chapitres": [
+      {
+        "t": "0:00",
+        "titre": "Générique"
+      },
+      {
+        "t": "0:07",
+        "titre": "Le projet de cabane"
+      },
+      {
+        "t": "0:58",
+        "titre": "Le budget de Milo"
+      },
+      {
+        "t": "2:18",
+        "titre": "Le chantier"
+      },
+      {
+        "t": "3:06",
+        "titre": "La rafale"
+      },
+      {
+        "t": "4:03",
+        "titre": "La cabane terminée"
+      },
+      {
+        "t": "4:57",
+        "titre": "Ton projet en famille"
+      }
+    ]
+  }
+}

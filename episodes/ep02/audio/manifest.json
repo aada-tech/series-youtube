@@ -1,0 +1,212 @@
+{
+  "01-narr.wav": {
+    "hash": "122091332b8f1f09f0235661d543e7c0",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Sur la place du village, il y a une grande armoire en métal, avec un levier sur le côté.",
+    "seconds": 5.952
+  },
+  "02-narr.wav": {
+    "hash": "5c2d3f1ecce00fcd2cdad07d1a4ebb25",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "La bergère tire le levier… et hop ! Trois jetons tombent dans le bac.",
+    "seconds": 5.4
+  },
+  "03-sacha.wav": {
+    "hash": "25b9d69b34ac739dbee6c318d2032705",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Waouh ! Il suffit de tirer le levier pour avoir des jetons ? Alors je vais en prendre plein, pour acheter tous les jeux du marché !",
+    "seconds": 8.4
+  },
+  "04-milo.wav": {
+    "hash": "c8fc13d7773874c185e43efad393cae5",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Attends, Sacha. Cette armoire n'est sûrement pas remplie à l'infini.",
+    "seconds": 6.12
+  },
+  "05-sacha.wav": {
+    "hash": "b8a73cffe9e5d823bcd276676e03e459",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Bien sûr que si ! Regarde, les jetons sortent tout seuls !",
+    "seconds": 4.872
+  },
+  "06-narr.wav": {
+    "hash": "9781a546e74d620e70ee7489d8351d53",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Sacha imagine déjà une armoire magique, qui déborde de jetons et ne se vide jamais.",
+    "seconds": 5.52
+  },
+  "07-narr.wav": {
+    "hash": "bc75bc2238ae2f983974a705b4b802c5",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Mais d'où viennent vraiment ces jetons ?",
+    "seconds": 2.616
+  },
+  "08-naya.wav": {
+    "hash": "bff79eb4266834bb4bcdddbbc3317b65",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Venez, tous les deux. On va suivre les jetons à l'envers, jusqu'à leur point de départ.",
+    "seconds": 5.376
+  },
+  "09-narr.wav": {
+    "hash": "fca85e67c345ff9c52cae181cba63f7a",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "La maraîchère travaille au potager depuis le lever du soleil. Elle bine la terre, elle sème, et elle protège ses salades de la grêle.",
+    "seconds": 8.904
+  },
+  "10-naya.wav": {
+    "hash": "f10e3dc7db1c7b2805d1546c5e8ab529",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Regardez cette jauge. Elle se remplit avec son temps, son effort, et tout ce qu'elle sait faire.",
+    "seconds": 5.616
+  },
+  "11-milo.wav": {
+    "hash": "38fce427eb2f1268fb8ffd44a2e75035",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Elle a commencé bien avant nous, et elle n'a toujours pas fini !",
+    "seconds": 4.536
+  },
+  "12-narr.wav": {
+    "hash": "7bba4632c4a394bbea2beb7bf409cd5b",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Quand les légumes sont prêts, la bergère vient les acheter. Et la jauge se transforme… en jetons.",
+    "seconds": 6.936
+  },
+  "13-sacha.wav": {
+    "hash": "b3f94f5b66693224b4484073621dc3c6",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Oh ! Ses jetons, elle les a gagnés en faisant pousser des légumes pour les autres.",
+    "seconds": 5.472
+  },
+  "14-naya.wav": {
+    "hash": "a7f9acdfd2186fe6fe6dc99992705134",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Et ce n'est pas fini. Regardez où vont ces jetons maintenant.",
+    "seconds": 3.648
+  },
+  "15-narr.wav": {
+    "hash": "3c2bcc1b36f879dde6b3b21b708b43c4",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le lendemain, la maraîchère porte son blé au moulin. Le meunier le transforme en farine.",
+    "seconds": 6.72
+  },
+  "16-meunier.wav": {
+    "hash": "a52341cb324acb259eba0bc4e8647103",
+    "role": "meunier",
+    "voice": "fr-FR-RemyMultilingualNeural",
+    "text": "Moudre le blé, c'est mon métier. Il faut savoir régler les meules, et surveiller le vent toute la journée.",
+    "seconds": 6.672
+  },
+  "17-narr.wav": {
+    "hash": "11a228ddd5957d5fcf378e71881a75e6",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Lui aussi a une jauge : son temps, sa force, son savoir-faire. Et la maraîchère le paie avec ses jetons.",
+    "seconds": 7.752
+  },
+  "18-milo.wav": {
+    "hash": "36ae2d14126346aeced64497bcecbb00",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Donc les jetons passent de main en main… et chaque fois, quelqu'un a rendu un service ou fabriqué quelque chose.",
+    "seconds": 7.512
+  },
+  "19-naya.wav": {
+    "hash": "6384bfd9224adb7f56b03703786f15c9",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Et l'armoire, alors ? Regardez à l'intérieur.",
+    "seconds": 3.552
+  },
+  "20-narr.wav": {
+    "hash": "e6a4a62d7d6e777d83740815fe421edc",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Chaque habitant y a son propre casier. La bergère y a rangé les jetons gagnés en vendant sa laine.",
+    "seconds": 6.84
+  },
+  "21-narr.wav": {
+    "hash": "ccda95ba98e93e6a69ee0fa64b478a62",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Quand elle tire le levier, l'armoire lui rend ses propres jetons. Pas un de plus.",
+    "seconds": 6.048
+  },
+  "22-sacha.wav": {
+    "hash": "098c053ed9d442e7c669ac7070d2293c",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et moi, je n'ai jamais rien déposé… Alors mon casier est vide.",
+    "seconds": 4.968
+  },
+  "23-naya.wav": {
+    "hash": "c31b6dd64984e43798438589f940e5c0",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Exactement. L'armoire garde l'argent. Elle ne le fabrique pas.",
+    "seconds": 4.488
+  },
+  "24-milo.wav": {
+    "hash": "cc2c8adb410c766eede07337ca49ede9",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Donc, pour retirer des jetons, il faut d'abord en avoir déposé. Et pour en déposer, il faut d'abord en avoir gagné.",
+    "seconds": 9.6
+  },
+  "25-narr.wav": {
+    "hash": "5da4c3b5a53ca4d2cb68c34cd09c79d4",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Voilà d'où viennent les pièces : du travail. Du temps, de l'effort, et des compétences mises au service des autres.",
+    "seconds": 8.064
+  },
+  "26-narr.wav": {
+    "hash": "1a3a5caab2ce5199ff8a09522ceb2e53",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Les jetons circulent ensuite de main en main, et l'armoire les garde en sécurité pour leurs propriétaires.",
+    "seconds": 6.216
+  },
+  "27-naya.wav": {
+    "hash": "9a7fc371bd772386c3a4b123a11b477f",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Chaque métier demande du temps pour apprendre. C'est aussi pour cela que le travail a de la valeur.",
+    "seconds": 5.04
+  },
+  "28-sacha.wav": {
+    "hash": "b44068f308119fbadc7cabb51de8027f",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Alors, si je veux des jetons, moi aussi, je peux proposer mon aide au potager !",
+    "seconds": 5.376
+  },
+  "29-naya.wav": {
+    "hash": "0d3c0256fd4d74375b2f08918970b251",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "À toi, maintenant ! Autour de toi, qui travaille ? Quel service rend cette personne, ou qu'est-ce qu'elle fabrique ?",
+    "seconds": 7.296
+  },
+  "30-naya.wav": {
+    "hash": "c89decaff7ceea3f7a56fe1aff1f549a",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Et toi, quel service pourrais-tu rendre à ta famille ou à tes amis ?",
+    "seconds": 3.6
+  }
+}

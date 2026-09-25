@@ -1,0 +1,254 @@
+{
+  "01-narr.wav": {
+    "hash": "baf5e89c8189bb21ffecf42883ee0f48",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Grand jour au Village des Trois Moulins : les enfants vont construire une cabane d'observation, pour regarder les oiseaux et les renards de la forêt.",
+    "seconds": 8.232
+  },
+  "02-narr.wav": {
+    "hash": "287ebea19a6018cf507766e407280da4",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Chacun a apporté sa réserve d'entraide. Tous ensemble, ils réunissent trente jetons.",
+    "seconds": 6.6
+  },
+  "03-sacha.wav": {
+    "hash": "e70c84dde6632660927560b9f429c22e",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Trente jetons ! On va faire la plus belle cabane du monde, avec des fanions, une lanterne, une balançoire…",
+    "seconds": 7.392
+  },
+  "04-milo.wav": {
+    "hash": "5e7b56b01c1c6c06a5f65d5494d81f33",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Doucement, Sacha. D'abord, il faut qu'elle tienne debout.",
+    "seconds": 5.592
+  },
+  "05-naya.wav": {
+    "hash": "5f3dc6a4b84baa4e1807b95737104dd6",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Avant d'acheter quoi que ce soit, on fait un plan. Sur le papier, les erreurs ne coûtent rien.",
+    "seconds": 5.352
+  },
+  "06-narr.wav": {
+    "hash": "460bf6a110b8e245e42487a54165d94b",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Comment construire une cabane solide, belle… et qui ne coûte pas plus que ce qu'on a ?",
+    "seconds": 5.04
+  },
+  "07-naya.wav": {
+    "hash": "f1652655908eb95b7782e9345dfc6079",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Milo, tu veux bien dessiner notre budget ?",
+    "seconds": 2.712
+  },
+  "08-milo.wav": {
+    "hash": "898a848e96dd0f63e0aad1734daf66f9",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Dans la première colonne, ce qu'on a : trente jetons. Dans la deuxième, ce qui est obligatoire pour que la cabane soit solide et sûre.",
+    "seconds": 10.344
+  },
+  "09-narr.wav": {
+    "hash": "583d7bc90f40209a9d301ac592b49bf9",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Des vis pour la structure : six jetons. Une toile étanche pour le toit : huit jetons. Des poulies pour hisser les planches : six jetons.",
+    "seconds": 9.936
+  },
+  "10-milo.wav": {
+    "hash": "96e6dd4aa666277cda52b6d1162c3184",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Vingt jetons d'obligatoire. Et je garde cinq jetons de côté, en réserve de secours, au cas où quelque chose tournerait mal.",
+    "seconds": 9.648
+  },
+  "11-sacha.wav": {
+    "hash": "d91c2042519153b47d6f8b3e5d0c893e",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et la décoration, alors ? Il reste cinq jetons !",
+    "seconds": 4.584
+  },
+  "12-milo.wav": {
+    "hash": "fba173de5d9cf8fd5ebc544415ab2da4",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "La décoration, ça ne sert à rien. On devrait tout garder.",
+    "seconds": 5.568
+  },
+  "13-naya.wav": {
+    "hash": "1a3448fe02405ff9e89d842559d49273",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Milo, une cabane, c'est aussi un endroit où l'on a envie de venir. Sacha, qu'est-ce qui te ferait le plus plaisir ?",
+    "seconds": 6.696
+  },
+  "14-sacha.wav": {
+    "hash": "cbab6d28cdd3c310e6057e629f36f2f3",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Des fanions de toutes les couleurs, pour trois jetons ! Et la lanterne… elle en coûte quatre.",
+    "seconds": 6.24
+  },
+  "15-narr.wav": {
+    "hash": "87fd8ce531412ac97705fa3969934f1d",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Les blocs de dépenses montent… mais la pile ne doit jamais dépasser la hauteur des ressources. La lanterne attendra.",
+    "seconds": 7.656
+  },
+  "16-narr.wav": {
+    "hash": "c532d9c2eb5c220cc5202dbfd84dcdb3",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le chantier commence. Chacun fait ce qu'il sait faire : Naya visse la structure, Sacha hisse les planches avec les poulies, Milo vérifie le plan.",
+    "seconds": 9.744
+  },
+  "17-sacha.wav": {
+    "hash": "7fbde53df54406cbb154f41ee5e1c54b",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Oh hisse ! Avec la poulie, les planches ne pèsent presque rien !",
+    "seconds": 4.728
+  },
+  "18-naya.wav": {
+    "hash": "ec780721bc90798bc8521dceb83c3ca6",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Une vis de plus ici… Voilà, le plancher est solide.",
+    "seconds": 3.864
+  },
+  "19-naya.wav": {
+    "hash": "369d957491a8e5185854ad433999fdbf",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Milo, la prochaine planche va où ?",
+    "seconds": 2.4
+  },
+  "20-milo.wav": {
+    "hash": "b9e8f6db27f00f22601c15fac67dfec9",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Côté gauche, juste au-dessus de la poutre. Et on a encore tous les jetons de la réserve.",
+    "seconds": 6.96
+  },
+  "21-narr.wav": {
+    "hash": "2b51ef2eafaa6b36618020da45e6650a",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Jour après jour, la cabane prend forme : le plancher, les murs, puis la grande toile bleue du toit.",
+    "seconds": 6.816
+  },
+  "22-narr.wav": {
+    "hash": "748ef1f50314d9fec004c90c11148e66",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Mais un soir, une rafale de vent souffle sur la forêt… Crac ! La poutre principale se brise.",
+    "seconds": 7.872
+  },
+  "23-sacha.wav": {
+    "hash": "9d0103a09f81e123ee5cecfb2357b669",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Oh non ! Sans poutre, la cabane ne tient plus. Tout est fichu !",
+    "seconds": 5.592
+  },
+  "24-milo.wav": {
+    "hash": "aff7a4b3b68d1de2bfdc3e493001f6a2",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Pas de panique. Une poutre neuve coûte cinq jetons. Et on a exactement… notre réserve de secours !",
+    "seconds": 8.976
+  },
+  "25-narr.wav": {
+    "hash": "8518d93244aab65b420b9cd0c46a40a8",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Les cinq jetons de secours paient une poutre neuve. Le lendemain, le chantier reprend, sans rien retirer au reste du budget.",
+    "seconds": 8.352
+  },
+  "26-naya.wav": {
+    "hash": "5e57ab509d35f9d62675e52589a4d773",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Cette réserve n'a servi à rien pendant des jours… jusqu'au soir où elle a tout sauvé.",
+    "seconds": 4.32
+  },
+  "27-sacha.wav": {
+    "hash": "72effec4ce23c8d98fa342a261f60037",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Je comprends pourquoi Milo y tenait autant !",
+    "seconds": 2.976
+  },
+  "28-milo.wav": {
+    "hash": "fbee24e6f2b8a4f4efb9150bdf472d60",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et moi, je comprends pourquoi les fanions comptaient autant pour toi.",
+    "seconds": 4.68
+  },
+  "29-narr.wav": {
+    "hash": "b789e7fe406407b2fa746fbd563a4663",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "La cabane est terminée ! Solide, étanche, décorée de fanions… et payée sans dépasser les trente jetons.",
+    "seconds": 7.752
+  },
+  "30-narr.wav": {
+    "hash": "da828d9d018e7382ff018745fd606719",
+    "role": "narr",
+    "voice": "fr-FR-DeniseNeural",
+    "text": "Le soir venu, tout le village vient visiter la cabane. Du haut de la plateforme, on voit enfin les renards sortir de la forêt.",
+    "seconds": 8.616
+  },
+  "31-naya.wav": {
+    "hash": "b7f318b1bf4b365abfb6446bc3728a37",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Vous avez tout utilisé : la monnaie pour échanger, le travail pour gagner des jetons, les boîtes verte et rouge pour choisir…",
+    "seconds": 6.672
+  },
+  "32-naya.wav": {
+    "hash": "d1b29dc70a3d5817c167903218f1bc8a",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "…le choix invisible, la patience des bocaux, la prudence avec la carte. Et un budget, avec une réserve pour les imprévus.",
+    "seconds": 7.56
+  },
+  "33-milo.wav": {
+    "hash": "d492605651df749c4e2409336eaca984",
+    "role": "milo",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et la lanterne ? On pourrait en faire notre prochain projet, dans un nouveau bocal !",
+    "seconds": 6.816
+  },
+  "34-sacha.wav": {
+    "hash": "5676a2ae209e5f3e45e2058030a76c7b",
+    "role": "sacha",
+    "voice": "fr-FR-EloiseNeural",
+    "text": "Et cette fois, c'est moi qui compte les semaines !",
+    "seconds": 3.12
+  },
+  "35-naya.wav": {
+    "hash": "cb98946c7741d4e723f8c06b01186dc3",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "À toi, maintenant ! Avec ta famille, choisis un petit projet : un pique-nique, une sortie, un cadeau.",
+    "seconds": 7.2
+  },
+  "36-naya.wav": {
+    "hash": "b6f0d0fb9542fdb94f66d19576c9d5d3",
+    "role": "naya",
+    "voice": "fr-FR-VivienneMultilingualNeural",
+    "text": "Fais la liste de ce qui est obligatoire, de ce qui fait plaisir… et n'oublie pas une petite réserve pour les imprévus !",
+    "seconds": 6.048
+  }
+}

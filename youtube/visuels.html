@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<title>Visuels YouTube</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Fredoka:wght@500;600;700&display=swap">
+<style>body { margin: 0; background: #222; } img { width: 640px; margin: 8px; }</style>
+</head>
+<body>
+<!-- Miniatures, bannière et logo de la chaîne, dessinés avec le moteur de la série.
+     Exportés par tools/youtube.cjs ; ouvrir la page dans un navigateur pour les prévisualiser. -->
+<script src="../episodes/moteur.js"></script>
+<script>
+(() => {
+  const { c, W, H, GROUND, INK, RED, GREEN, CLAY, PAPER, BLUE, FD, clamp, rr, circ, poly, alpha,
+    person, item, token, tokens, windmill, sky, house, rays, sparkle } = Moteur;
+  const wcv = c.canvas;
+
+  // Titre en capitales, contour épais : lisible même en tout petit sur un téléphone.
+  function title(lines, x, y, size, col = '#FFFFFF', stroke = INK) {
+    c.save(); c.textAlign = 'left'; c.textBaseline = 'alphabetic'; c.lineJoin = 'round';
+    lines.forEach((t, i) => {
+      const yy = y + i * size * 1.02;
+      c.font = `700 ${size}px ${FD}`;
+      c.lineWidth = size * .2; c.strokeStyle = stroke; c.strokeText(t, x, yy);
+      c.fillStyle = Array.isArray(col) ? col[i] || col[0] : col; c.fillText(t, x, yy);
+    });
+    c.restore();
+  }
+  function badge(n) {
+    c.save();
+    c.fillStyle = CLAY; rr(56, 52, 330, 96, 48); c.fill();
+    c.strokeStyle = INK; c.lineWidth = 8; c.stroke();
+    c.fillStyle = '#FFFFFF'; c.font = `700 52px ${FD}`; c.textAlign = 'center'; c.textBaseline = 'middle';
+    c.fillText(`ÉPISODE ${n}`, 221, 102);
+    c.restore();
+  }
+  function brand() {
+    c.save(); c.fillStyle = 'rgba(43,46,51,.82)'; rr(56, H - 118, 690, 70, 35); c.fill();
+    c.fillStyle = '#FFFFFF'; c.font = `600 38px ${FD}`; c.textBaseline = 'middle'; c.fillText('Le Village des Trois Moulins', 90, H - 82);
+    c.restore();
+  }
+  function ground(dusk = 0) {
+    sky({ ang: .6, dusk });
+    windmill(1180, GROUND - 40, .9, .6); windmill(1520, GROUND - 70, .65, 1.4);
+    c.fillStyle = '#9CCB7A'; c.fillRect(0, GROUND - 20, W, H); c.fillStyle = '#86B866'; c.fillRect(0, GROUND + 40, W, H);
+  }
+  // Voile sombre à gauche pour détacher le titre.
+  function veil() {
+    const g = c.createLinearGradient(0, 0, 1100, 0);
+    g.addColorStop(0, 'rgba(20,24,30,.55)'); g.addColorStop(1, 'rgba(20,24,30,0)');
+    c.fillStyle = g; c.fillRect(0, 0, W, H);
+  }
+  function question(x, y, s, col = '#FFD24A') {
+    c.save(); c.translate(x, y); c.rotate(.12);
+    c.font = `700 ${s}px ${FD}`; c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
+    c.lineWidth = s * .14; c.strokeStyle = INK; c.strokeText('?', 0, 0); c.fillStyle = col; c.fillText('?', 0, 0);
+    c.restore();
+  }
+  function disc(x, y, r, col) { c.fillStyle = col; circ(x, y, r); c.fill(); c.strokeStyle = INK; c.lineWidth = 10; c.stroke(); }
+  function cross(x, y, s) { c.save(); c.strokeStyle = RED; c.lineWidth = s * .22; c.lineCap = 'round'; c.beginPath(); c.moveTo(x - s, y - s); c.lineTo(x + s, y + s); c.moveTo(x + s, y - s); c.lineTo(x - s, y + s); c.stroke(); c.restore(); }
+
+  const EP = {
+    1() {
+      ground(); rays(1420, 420, 560, 1);
+      person('menuisier', 1650, GROUND + 60, 700, { face: -1, mood: '?' });
+      person('sacha', 1150, GROUND + 80, 560, { face: 1, mood: '!', open: .7 });
+      disc(1320, 300, 120, '#FFFFFF'); item('pomme', 1320, 300, 90);
+      disc(1560, 190, 100, '#FFFFFF'); item('clous', 1560, 190, 70);
+      cross(1440, 250, 46);
+      veil(); badge(1); title(['POMMES', 'CONTRE', 'CLOUS ?'], 70, 360, 170, ['#FFFFFF', '#FFFFFF', '#FFD24A']); brand();
+    },
+    2() {
+      ground(); rays(1400, 380, 640, 1);
+      for (let i = 0; i < 14; i++) token(1060 + (i * 137) % 820, 110 + (i * 211) % 400, 42, 1, 1, .55 + .45 * Math.abs(Math.cos(i * 1.3)));
+      person('sacha', 1250, GROUND + 80, 580, { face: 1, mood: '!', open: .8 });
+      person('milo', 1640, GROUND + 80, 560, { face: -1, mood: 'think' });
+      veil(); badge(2); title(["L'ARGENT", 'TOMBE', 'DU CIEL ?'], 70, 360, 170, ['#FFFFFF', '#FFFFFF', '#FFD24A']); brand();
+    },
+    3() {
+      ground();
+      c.fillStyle = GREEN; rr(1030, 250, 360, 300, 30); c.fill(); c.strokeStyle = INK; c.lineWidth = 10; c.stroke();
+      c.fillStyle = RED; rr(1450, 250, 360, 300, 30); c.fill(); c.stroke();
+      item('eau', 1130, 400, 70); item('trousse', 1290, 400, 60);
+      item('bonbons', 1550, 400, 64); item('toupie', 1710, 400, 60);
+      person('sacha', 1250, GROUND + 90, 420, { face: 1, mood: '?' });
+      person('milo', 1620, GROUND + 90, 410, { face: -1, mood: '!' });
+      veil(); badge(3); title(['BESOIN', 'OU', 'ENVIE ?'], 70, 360, 180, ['#7BE0A6', '#FFFFFF', '#FF8A80']); brand();
+    },
+    4() {
+      ground(); rays(1400, 330, 520, .8);
+      c.strokeStyle = INK; c.lineWidth = 14; c.beginPath(); c.moveTo(1500, 120); c.lineTo(1500, 330); c.moveTo(1240, 190); c.lineTo(1760, 150); c.stroke();
+      disc(1240, 250, 105, '#FFFFFF'); item('pinceaux', 1240, 250, 74);
+      alpha(.4, () => { disc(1760, 210, 105, '#FFFFFF'); item('cerfvolant', 1760, 210, 74); });
+      person('sacha', 1500, GROUND + 90, 500, { face: -1, mood: 'think' });
+      veil(); badge(4); title(['PINCEAUX', 'OU', 'CERF-VOLANT ?'], 70, 380, 128, ['#FFFFFF', '#FFD24A', '#FFFFFF']); brand();
+    },
+    5() {
+      ground();
+      c.fillStyle = 'rgba(210,235,250,.55)'; rr(1380, 200, 300, 420, 50); c.fill(); c.strokeStyle = INK; c.lineWidth = 10; c.stroke();
+      for (let i = 0; i < 12; i++) token(1440 + (i % 4) * 60, 580 - Math.floor(i / 4) * 64, 30);
+      c.strokeStyle = INK; c.lineWidth = 6; for (let i = 1; i < 6; i++) { c.beginPath(); c.moveTo(1380, 620 - i * 70); c.lineTo(1420, 620 - i * 70); c.stroke(); }
+      disc(1790, 250, 105, '#FFFFFF'); item('engrenage', 1790, 250, 80);
+      person('sacha', 1210, GROUND + 90, 500, { face: 1, mood: '!', open: .6 });
+      sparkle(1690, 200, 40); sparkle(1370, 170, 30);
+      veil(); badge(5); title(['ATTENDRE', 'POUR MIEUX', 'AVOIR !'], 70, 360, 142, ['#FFFFFF', '#FFFFFF', '#FFD24A']); brand();
+    },
+    6() {
+      ground(); rays(1420, 330, 600, 1);
+      c.save(); c.translate(1420, 330); c.rotate(-.18); c.fillStyle = BLUE; rr(-230, -145, 460, 290, 30); c.fill(); c.strokeStyle = INK; c.lineWidth = 10; c.stroke();
+      c.fillStyle = '#F4C542'; rr(-170, -60, 100, 76, 12); c.fill(); c.fillStyle = 'rgba(255,255,255,.85)'; rr(-170, 70, 300, 26, 13); c.fill(); c.restore();
+      sparkle(1650, 160, 50); sparkle(1170, 230, 36);
+      question(1760, 480, 220);
+      person('sacha', 1150, GROUND + 90, 480, { face: 1, mood: '!', open: .7 });
+      person('naya', 1620, GROUND + 90, 540, { face: -1, mood: 'think' });
+      veil(); badge(6); title(['LA CARTE', 'EST-ELLE', 'MAGIQUE ?'], 70, 360, 170, ['#FFFFFF', '#FFFFFF', '#FFD24A']); brand();
+    },
+    7() {
+      ground(.25);
+      c.fillStyle = '#A0703F'; poly([[1180, 560], [1720, 560], [1650, 330], [1250, 330]]); c.fill(); c.strokeStyle = INK; c.lineWidth = 10; c.stroke();
+      c.fillStyle = '#C0643A'; poly([[1200, 340], [1700, 340], [1450, 150]]); c.fill(); c.stroke();
+      c.strokeStyle = INK; c.lineWidth = 8; for (let x = 1280; x < 1650; x += 70) { c.beginPath(); c.moveTo(x, 560); c.lineTo(x, 340); c.stroke(); }
+      item('poutre', 1450, 640, 80, 1, -.15);
+      person('milo', 1110, GROUND + 90, 430, { face: 1, mood: '!' });
+      person('sacha', 1790, GROUND + 90, 420, { face: -1, mood: '!', open: .6 });
+      person('naya', 1450, GROUND + 110, 470, { face: 1 });
+      veil(); badge(7); title(['LE BUDGET', 'DE LA', 'CABANE'], 70, 360, 170, ['#FFFFFF', '#FFFFFF', '#FFD24A']); brand();
+    },
+    // Bannière 2560 × 1440 (dessinée en 1920 × 1080 puis agrandie) : texte dans la zone sûre centrale.
+    banniere() {
+      ground();
+      house(260, GROUND - 10, 1); house(1640, GROUND - 10, .9);
+      person('sacha', 760, GROUND + 20, 330, { face: 1, mood: '!', open: .6 });
+      person('naya', 960, GROUND + 20, 370, { face: 1 });
+      person('milo', 1160, GROUND + 20, 320, { face: -1, mood: 'think' });
+      for (let i = 0; i < 7; i++) token(560 + i * 133, 330, 30);
+      c.save(); c.textAlign = 'center'; c.textBaseline = 'middle'; c.lineJoin = 'round';
+      c.font = `700 88px ${FD}`; c.lineWidth = 18; c.strokeStyle = INK; c.strokeText('Le Village des Trois Moulins', 960, 430); c.fillStyle = '#FFFFFF'; c.fillText('Le Village des Trois Moulins', 960, 430);
+      c.font = `600 40px ${FD}`; c.lineWidth = 10; c.strokeText("L'argent expliqué aux 6-9 ans · un épisode chaque mercredi", 960, 512); c.fillStyle = '#FFD24A'; c.fillText("L'argent expliqué aux 6-9 ans · un épisode chaque mercredi", 960, 512);
+      c.restore();
+    },
+    logo() {
+      c.fillStyle = '#8FC2E4'; c.fillRect(0, 0, W, H);
+      const x = 960, y = 540;
+      c.fillStyle = '#F6F7F2'; circ(x, y, 400); c.fill();
+      c.fillStyle = '#9CCB7A'; c.save(); circ(x, y, 400); c.clip(); c.fillRect(0, y + 150, W, H); c.restore();
+      windmill(x - 150, y + 170, 1.25, .5); windmill(x + 170, y + 170, 1.05, 1.3);
+      token(x, y - 160, 125);
+      c.strokeStyle = INK; c.lineWidth = 22; circ(x, y, 400); c.stroke();
+    },
+  };
+
+  window.dessiner = name => {
+    c.save(); c.setTransform(1, 0, 0, 1, 0, 0); c.clearRect(0, 0, W, H); EP[name](); c.restore();
+    return wcv;
+  };
+  window.exporter = (name, w, h, crop) => {
+    const src = window.dessiner(name), out = document.createElement('canvas');
+    out.width = w; out.height = h;
+    const x = out.getContext('2d'); x.imageSmoothingQuality = 'high';
+    const [sx, sy, sw, sh] = crop || [0, 0, W, H];
+    x.drawImage(src, sx, sy, sw, sh, 0, 0, w, h);
+    return out.toDataURL(name === 'logo' ? 'image/png' : 'image/jpeg', .92).split(',')[1];
+  };
+  window.NOMS = Object.keys(EP);
+  window.pret = Promise.race([Promise.all([document.fonts.load(`700 80px ${FD}`), document.fonts.load(`600 40px ${FD}`)]), new Promise(r => setTimeout(r, 4000))]);
+  // Aperçu dans le navigateur.
+  window.pret.then(() => { for (const n of window.NOMS) { const img = new Image(); img.src = 'data:image/jpeg;base64,' + window.exporter(n, 1280, 720); document.body.appendChild(img); } });
+})();
+</script>
+</body>
+</html>
